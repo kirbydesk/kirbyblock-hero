@@ -1,0 +1,25 @@
+{
+	"name": "chrfickinger/kirbyblock-hero",
+	"description": "Kirbyblock Hero",
+	"type": "kirby-plugin",
+	"version": "1.0.0",
+	"keywords": [
+		"kirby",
+		"kirby-plugin"
+	],
+	"license": "Proprietary",
+	"homepage": "https://github.com/chrfickinger/kirbyblock-hero",
+	"authors": [
+		{
+			"name": "Christian Fickinger",
+			"email": "mail@christianfickinger.de",
+			"homepage": "https://christianfickinger.de"
+		}
+	],
+	"extra": {
+		"installer-name": "kirbyblock-hero"
+	},
+	"require": {
+		"chrfickinger/kirby-fields": "^1.0"
+	}
+}
