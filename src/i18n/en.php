@@ -1,4 +1,4 @@
 <?php return array(
 
-	'kirbyblockhero.title' => 'Hero',
+	'kdblockhero.title' => 'Hero',
 );
