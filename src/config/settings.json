@@ -1,0 +1,8 @@
+{
+  "heading": true,
+	"text": true,
+  "buttons": true,
+  "tab-grid": true,
+  "tab-spacing": true,
+  "tab-theme": true
+}

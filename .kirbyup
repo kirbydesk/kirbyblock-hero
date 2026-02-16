@@ -1,0 +1,30 @@
+# KirbyUp Build Marker
+
+This `.kirbyup` file tells the project's build system to automatically watch
+and rebuild this plugin when its source files change.
+
+## How it works:
+1. The project's `kirbyup-sync.config.js` scans for plugins with `.kirbyup` files
+2. For each plugin found, it runs `kirbyup src/index.js --watch` in the background
+3. When you edit Vue/JS files in `src/`, the plugin is automatically rebuilt
+4. Compiled output is written to `index.js` and `index.css` in the plugin root
+
+## Build Process:
+- Source: `src/index.js` (entry point)
+- Output: `index.js` (compiled) + `index.css` (compiled styles)
+- Runs: Automatically via `npm run dev` or `npm run watch`
+
+## Benefits:
+- No manual build commands needed
+- Instant feedback when editing components
+- Only rebuilds changed plugins (fast)
+- Consistent build setup across all plugins
+
+## Manual Build:
+If needed, you can build manually from the project root:
+```bash
+cd /path/to/project
+npx kirbyup site/plugins/kirbyblock-hero/src/index.js
+```
+
+Do not delete this file unless you want to disable automatic building.

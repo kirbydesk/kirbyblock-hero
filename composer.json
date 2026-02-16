@@ -1,5 +1,5 @@
 {
-	"name": "kirbydesk/block-hero",
+	"name": "kirbydesk/kirbyblock-hero",
 	"description": "Hero Block for Kirby CMS",
 	"type": "kirby-plugin",
 	"keywords": [
@@ -7,19 +7,19 @@
 		"kirby-plugin"
 	],
 	"license": "proprietary",
-	"homepage": "https://github.com/kirbydesk/block-hero",
+	"homepage": "https://github.com/kirbydesk/kirbyblock-hero",
 	"authors": [
 		{
 			"name": "Christian Fickinger",
-			"email": "kirby@christianfickinger.de",
-			"homepage": "https://christianfickinger.de"
+      "email": "hello@kirbydesk.com",
+      "homepage": "https://kirbydesk.com"
 		}
 	],
 	"extra": {
-		"installer-name": "block-hero"
+		"installer-name": "kirbyblock-hero"
 	},
 	"require": {
 		"getkirby/composer-installer": "^1.2",
-		"kirbydesk/fields": "dev-main"
+		"kirbydesk/kirby-pagewizard": "dev-main"
 	}
 }

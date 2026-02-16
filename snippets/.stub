@@ -1,0 +1,22 @@
+# Stub File Marker
+
+This `.stub` file tells the Tailwind hook to automatically generate editable
+snippet stubs in your project's `site/snippets/blocks/` directory.
+
+## How it works:
+1. When Kirby loads (in debug mode), the hook scans for plugins with `.stub` files
+2. For each `.stub` file found, it creates deactivated stub files (prefixed with `_`)
+3. These stubs are copied from the plugin's snippets to your project
+4. To activate a stub, simply remove the leading underscore from the filename
+
+## Example:
+- Generated stub: `site/snippets/blocks/_pwhero.php` (inactive)
+- Activated override: `site/snippets/blocks/pwhero.php` (active, overrides plugin)
+
+## Benefits:
+- Edit snippets without modifying plugin code
+- Stubs are pre-filled with plugin defaults
+- Easy to activate/deactivate overrides
+- Project-specific customizations stay in your project
+
+Do not delete this file unless you want to disable automatic stub generation.

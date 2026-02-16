@@ -1,0 +1,22 @@
+# Stub File Marker
+
+This `.stub` file tells the Tailwind hook to automatically generate modular
+CSS patch stubs in your project's `site/patches/css/` directory.
+
+## How it works:
+1. When Kirby loads (in debug mode), the hook scans for plugins with `.stub` files
+2. For each CSS module in this plugin, it creates a deactivated patch (prefixed with `_`)
+3. These patches are copied from the plugin to `site/patches/css/kirbyblock-hero/`
+4. To activate a patch, simply remove the leading underscore from the filename
+
+## Example:
+- Generated patch: `site/patches/css/kirbyblock-hero/_custom.css` (inactive, plugin CSS used)
+- Activated patch: `site/patches/css/kirbyblock-hero/custom.css` (active, overrides plugin)
+
+## Benefits:
+- Override specific CSS modules without touching plugin files
+- Patches are pre-filled with plugin defaults
+- Easy to activate/deactivate individual modules
+- Tailwind automatically watches active patches
+
+Do not delete this file unless you want to disable automatic patch generation.
