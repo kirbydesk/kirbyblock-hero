@@ -37,7 +37,9 @@
 					class="pwGridItem"
 					:style="gridVars"
 					:data-paddingtop="content.paddingtop === true ? 'true' : null"
+					:data-paddingright="content.paddingright === true ? 'true' : null"
 					:data-paddingbottom="content.paddingbottom === true ? 'true' : null"
+					:data-paddingleft="content.paddingleft === true ? 'true' : null"
 					>
 
 					<div class="contents" :data-h="content.positionhorizontal" :data-v="content.positionvertical">
@@ -48,7 +50,7 @@
 						<pwTextarea v-if="settings.text" :value="content.texttextarea" />
 
 						<!-- Buttons -->
-						<pwButtons v-if="settings.buttons" :value="content.buttons" />
+						<pwButtons v-if="settings.buttons" :value="content.buttons" :align="content.buttonsalignment" />
 					</div>
 
 				</div>
@@ -141,7 +143,6 @@ div.pwPreview[data-kirbyblock="hero"] {
 		.contents {
 			display: flex;
 			flex-direction: column;
-			padding: var(--spacing-3);
 
 			/* Horizontal */
 			&[data-h="left"] { margin-right: auto; }
