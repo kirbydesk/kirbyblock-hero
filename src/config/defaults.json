@@ -12,5 +12,7 @@
   "padding-top": true,
   "padding-bottom": true,
   "style": "default",
-  "background-size": "content"
+  "background-size": "content",
+	"horizontal-content-position": "left",
+	"vertical-content-position": "middle"
 }

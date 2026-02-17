@@ -36,6 +36,10 @@
 				'extends' => 'blocks/pwButtons',
 			];
 		}
+		/* -------------- Position --------------*/
+		$contentFields['headlinePosition'] = ['extends' => 'pagewizard/headlines/position'];
+		$contentFields['positionHorizontal'] = ['extends' => 'pagewizard/fields/position-horizontal'];
+		$contentFields['positionVertical'] = ['extends' => 'pagewizard/fields/position-vertical'];
 
 		$tabs['content'] = [
 			'label'  => 'pw.tab.content',
@@ -49,6 +53,23 @@
 				'headlineLayout' => ['extends' => 'pagewizard/headlines/layout'],
 				'backgroundType' => [
 					'extends' => 'pagewizard/fields/background-type'
+				],
+				'image' => [
+					'extends' => 'pagewizard/fields/image',
+					'uploads' => 'pwHero',
+					'query' => 'page.images.template("pwHero")',
+					'when'    => [
+						'backgroundType' => 'image'
+					]
+				],
+				'video' => [
+					'extends' => 'pagewizard/fields/video',
+					'width' => '1/1',
+					'uploads' => 'pwVideo',
+					'query' => 'page.videos.template("pwVideo")',
+					'when'    => [
+						'backgroundType' => 'video'
+					]
 				]
 			]
 		];

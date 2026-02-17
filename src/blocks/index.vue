@@ -12,15 +12,46 @@
 			icon="star"
 		/>
 
-		<div class="pwGrid">
-			<div
-				class="pwGridItem"
-				:style="gridVars"
-				:data-paddingtop="content.paddingtop === true ? 'true' : null"
-				:data-paddingbottom="content.paddingbottom === true ? 'true' : null"
-				>
+		<div
+			class="background"
+			:style="{
+				...(content.backgroundtype === 'image' && backgroundImageUrl
+					? { '--background-image': `url('${backgroundImageUrl}')` }
+					: { '--background-image': 'none' }),
+				'borderRadius': 'var(--rounded)',
+				'aspectRatio': (content.backgroundtype === 'video' && content.video && content.video.length)
+					? '16/9'
+					: '21/9'
+			}"
+			>
+			<video
+				v-if="content.backgroundtype === 'video' && content.video && content.video.length"
+				:src="content.video[0].url"
+				muted
+				playsinline
+				class="background-video"
+			></video>
 
+			<div class="pwGrid">
+				<div
+					class="pwGridItem"
+					:style="gridVars"
+					:data-paddingtop="content.paddingtop === true ? 'true' : null"
+					:data-paddingbottom="content.paddingbottom === true ? 'true' : null"
+					>
 
+					<div class="contents" :data-h="content.positionhorizontal" :data-v="content.positionvertical">
+						<!-- Heading -->
+						<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" />
+
+						<!-- Textarea -->
+						<pwTextarea v-if="settings.text" :value="content.texttextarea" />
+
+						<!-- Buttons -->
+						<pwButtons v-if="settings.buttons" :value="content.buttons" />
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
@@ -28,13 +59,100 @@
 
 <script>
 import pwBlockinfo from '@/../../kirby-pagewizard/src/components/blockinfo.vue';
-
+import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue'
+import pwTextarea from '@/../../kirby-pagewizard/src/components/textarea.vue'
+import pwButtons from '@/../../kirby-pagewizard/src/components/buttons.vue'
 import pwGridStyle from '@/../../kirby-pagewizard/src/mixins/gridStyle.js';
 
 export default {
 	components: {
-		pwBlockinfo
+		pwBlockinfo,
+		pwHeading,
+		pwTextarea,
+		pwButtons
 	},
-	mixins: [pwGridStyle]
+	mixins: [pwGridStyle],
+	data() {
+		return {
+			settings: {}
+		}
+	},
+	async created() {
+		try {
+			const response = await this.$api.get('pagewizard/settings/pwhero');
+			this.settings = response.settings;
+		} catch (e) {
+			this.settings = {};
+		}
+	},
+	computed: {
+		backgroundImageUrl() {
+			if (!this.content.image || !this.content.image.length || !this.content.image[0]) return '';
+			const srcset = this.content.image[0].image?.srcset;
+			if (!srcset) return this.content.image[0].url;
+			const entries = srcset.split(',');
+			const last = entries[entries.length - 1].trim().split(' ')[0];
+			return last || this.content.image[0].url;
+		}
+	}
 }
 </script>
+
+<style scoped>
+div.pwPreview[data-kirbyblock="hero"] {
+	padding: 0;
+
+	div.background {
+		position: relative;
+		overflow: hidden;
+	}
+	div.background::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background-image: var(--background-image, none);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	.background-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: 0;
+	}
+	.pwGrid {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: transparent;
+
+		.pwGridItem {
+			background: transparent;
+			border-left: 1px dashed rgba(255, 255, 255, 0.5);
+			border-right: 1px dashed rgba(255, 255, 255, 0.5);
+			display: flex;
+			height: 100%;
+		}
+		.contents {
+			display: flex;
+			flex-direction: column;
+			padding: var(--spacing-3);
+
+			/* Horizontal */
+			&[data-h="left"] { margin-right: auto; }
+			&[data-h="center"] { margin-left: auto; margin-right: auto; }
+			&[data-h="right"] { margin-left: auto; }
+
+			/* Vertical */
+			&[data-v="top"] { margin-bottom: auto; }
+			&[data-v="middle"] { margin-top: auto; margin-bottom: auto; }
+			&[data-v="bottom"] { margin-top: auto; }
+		}
+	}
+}
+</style>
