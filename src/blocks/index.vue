@@ -133,12 +133,9 @@ div.pwPreview[data-kirbyblock="hero"] {
 		position: absolute;
 		inset: 0;
 		z-index: 1;
-		background: transparent;
 
 		.pwGridItem {
 			background: transparent;
-			border-left: 1px dashed rgba(255, 255, 255, 0.5);
-			border-right: 1px dashed rgba(255, 255, 255, 0.5);
 			display: flex;
 			height: 100%;
 		}

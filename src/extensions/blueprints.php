@@ -62,7 +62,8 @@
 		/* -------------- Style Tab --------------*/
 		$tabs['style'] = pwStyle::options('pwhero', $defaults, [
 			'backgroundType' => [
-				'extends' => 'pagewizard/fields/background-type'
+				'extends' => 'pagewizard/fields/background-type',
+				'default' => $defaults['background-type']
 			],
 			'image' => [
 				'extends' => 'pagewizard/fields/image',

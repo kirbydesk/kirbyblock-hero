@@ -13,8 +13,9 @@
   "padding-right": true,
   "padding-bottom": true,
 	"padding-left": true,
-  "style": "default",
+  "style": "variant",
   "background-size": "content",
+	"background-type": "color",
 	"horizontal-content-position": "left",
 	"vertical-content-position": "middle"
 }
