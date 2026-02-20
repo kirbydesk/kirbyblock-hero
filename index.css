@@ -103,7 +103,7 @@ div.background[data-v-823ce87b]::before {
 		z-index: 0;
 		background-image: var(--background-image, none);
 		background-size: cover;
-		background-position: center;
+		background-position: var(--background-position, center);
 		background-repeat: no-repeat;
 }
 .background-video[data-v-823ce87b] {

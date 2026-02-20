@@ -16,13 +16,11 @@
 		<div
 			class="background"
 			:style="{
-				...(content.backgroundtype === 'image' && backgroundImageUrl
-					? { '--background-image': `url('${backgroundImageUrl}')` }
+				...(content.backgroundtype === 'image' && backgroundImageUrl && focusReady
+					? { '--background-image': `url('${backgroundImageUrl}')`, '--background-position': imageFocus }
 					: { '--background-image': 'none' }),
 				'borderRadius': 'var(--rounded)',
-				'aspectRatio': (content.backgroundtype === 'video' && content.video && content.video.length)
-					? '16/9'
-					: '21/9'
+				'aspectRatio': heightRatio
 			}"
 			>
 			<video
@@ -48,7 +46,7 @@
 						<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" />
 
 						<!-- Textarea -->
-						<pwTextarea v-if="settings.text" :value="content.texttextarea" />
+						<pwTextarea v-if="settings.text" :value="content.text" />
 
 						<!-- Buttons -->
 						<pwButtons v-if="settings.buttons" :value="content.buttons" :align="content.buttonsalignment" />
@@ -78,7 +76,9 @@ export default {
 	mixins: [pwGridStyle, pwColorStyle],
 	data() {
 		return {
-			settings: {}
+			settings: {},
+			imageFocus: '50% 50%',
+			focusReady: false
 		}
 	},
 	async created() {
@@ -88,8 +88,43 @@ export default {
 		} catch (e) {
 			this.settings = {};
 		}
+		this.loadFocus();
+	},
+	watch: {
+		'content.image': {
+			handler() { this.loadFocus(); },
+			deep: true
+		}
+	},
+	methods: {
+		async loadFocus() {
+			this.focusReady = false;
+			if (!this.content.image || !this.content.image.length || !this.content.image[0]) {
+				this.imageFocus = '50% 50%';
+				this.focusReady = true;
+				return;
+			}
+			const file = this.content.image[0];
+			try {
+				const data = await this.$api.get(file.parent + '/files/' + file.filename);
+				this.imageFocus = data.content?.focus || '50% 50%';
+			} catch (e) {
+				this.imageFocus = '50% 50%';
+			}
+			this.focusReady = true;
+		}
 	},
 	computed: {
+		heightRatio() {
+			const ratios = {
+				auto: '5/1',
+				small: '4/1',
+				medium: '21/9',
+				large: '16/9',
+				fullscreen: '9/9'
+			};
+			return ratios[this.content.height] || '21/9';
+		},
 		backgroundImageUrl() {
 			if (!this.content.image || !this.content.image.length || !this.content.image[0]) return '';
 			const srcset = this.content.image[0].image?.srcset;
@@ -117,7 +152,7 @@ div.pwPreview[data-kirbyblock="hero"] {
 		z-index: 0;
 		background-image: var(--background-image, none);
 		background-size: cover;
-		background-position: center;
+		background-position: var(--background-position, center);
 		background-repeat: no-repeat;
 	}
 	.background-video {

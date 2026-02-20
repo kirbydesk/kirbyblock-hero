@@ -13,6 +13,7 @@
   "padding-right": true,
   "padding-bottom": true,
 	"padding-left": true,
+  "height": "medium",
   "style": "variant",
   "background-size": "content",
 	"background-type": "color",

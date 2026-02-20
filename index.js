@@ -241,7 +241,9 @@
     mixins: [pwGridStyle, pwColorStyle],
     data() {
       return {
-        settings: {}
+        settings: {},
+        imageFocus: "50% 50%",
+        focusReady: false
       };
     },
     async created() {
@@ -251,8 +253,46 @@
       } catch (e) {
         this.settings = {};
       }
+      this.loadFocus();
+    },
+    watch: {
+      "content.image": {
+        handler() {
+          this.loadFocus();
+        },
+        deep: true
+      }
+    },
+    methods: {
+      async loadFocus() {
+        var _a;
+        this.focusReady = false;
+        if (!this.content.image || !this.content.image.length || !this.content.image[0]) {
+          this.imageFocus = "50% 50%";
+          this.focusReady = true;
+          return;
+        }
+        const file = this.content.image[0];
+        try {
+          const data = await this.$api.get(file.parent + "/files/" + file.filename);
+          this.imageFocus = ((_a = data.content) == null ? void 0 : _a.focus) || "50% 50%";
+        } catch (e) {
+          this.imageFocus = "50% 50%";
+        }
+        this.focusReady = true;
+      }
     },
     computed: {
+      heightRatio() {
+        const ratios = {
+          auto: "5/1",
+          small: "4/1",
+          medium: "21/9",
+          large: "16/9",
+          fullscreen: "9/9"
+        };
+        return ratios[this.content.height] || "21/9";
+      },
       backgroundImageUrl() {
         var _a;
         if (!this.content.image || !this.content.image.length || !this.content.image[0]) return "";
@@ -267,10 +307,10 @@
   var _sfc_render = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "hero", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-hero.name"), "icon": "star" } }), _c("div", { staticClass: "background", style: {
-      ..._vm.content.backgroundtype === "image" && _vm.backgroundImageUrl ? { "--background-image": `url('${_vm.backgroundImageUrl}')` } : { "--background-image": "none" },
+      ..._vm.content.backgroundtype === "image" && _vm.backgroundImageUrl && _vm.focusReady ? { "--background-image": `url('${_vm.backgroundImageUrl}')`, "--background-position": _vm.imageFocus } : { "--background-image": "none" },
       "borderRadius": "var(--rounded)",
-      "aspectRatio": _vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? "16/9" : "21/9"
-    } }, [_vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? _c("video", { staticClass: "background-video", attrs: { "src": _vm.content.video[0].url, "muted": "", "playsinline": "" }, domProps: { "muted": true } }) : _vm._e(), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents", attrs: { "data-h": _vm.content.positionhorizontal, "data-v": _vm.content.positionvertical } }, [_vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level } }) : _vm._e(), _vm.settings.text ? _c("pwTextarea", { attrs: { "value": _vm.content.texttextarea } }) : _vm._e(), _vm.settings.buttons ? _c("pwButtons", { attrs: { "value": _vm.content.buttons, "align": _vm.content.buttonsalignment } }) : _vm._e()], 1)])])])], 1);
+      "aspectRatio": _vm.heightRatio
+    } }, [_vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? _c("video", { staticClass: "background-video", attrs: { "src": _vm.content.video[0].url, "muted": "", "playsinline": "" }, domProps: { "muted": true } }) : _vm._e(), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents", attrs: { "data-h": _vm.content.positionhorizontal, "data-v": _vm.content.positionvertical } }, [_vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level } }) : _vm._e(), _vm.settings.text ? _c("pwTextarea", { attrs: { "value": _vm.content.text } }) : _vm._e(), _vm.settings.buttons ? _c("pwButtons", { attrs: { "value": _vm.content.buttons, "align": _vm.content.buttonsalignment } }) : _vm._e()], 1)])])])], 1);
   };
   var _sfc_staticRenderFns = [];
   _sfc_render._withStripped = true;

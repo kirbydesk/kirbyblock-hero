@@ -1,3 +1,83 @@
-section[data-block="hero"] {
+/*------------------------------------------------------------------------------------------------
+	Hero Block
 
+	Override: Activate patch file site/patches/css/kirbyblock-hero/styles.css
+------------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------------
+	Hero Height Variables
+------------------------------------------------------------------------------------------------*/
+:root {
+	--pw-hero-height-small: 25vh;
+	--pw-hero-height-medium: 50vh;
+	--pw-hero-height-large: 75vh;
+	--pw-hero-height-fullscreen: 100vh;
 }
+
+
+/*------------------------------------------------------------------------------------------------
+	Hero Block Base
+------------------------------------------------------------------------------------------------*/
+section[data-block="hero"] {
+	position: relative;
+	overflow: hidden;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+	Hero Height Variants
+------------------------------------------------------------------------------------------------*/
+section[data-block="hero"][data-height="auto"]       { height: auto; }
+section[data-block="hero"][data-height="small"]      { height: var(--pw-hero-height-small); }
+section[data-block="hero"][data-height="medium"]     { height: var(--pw-hero-height-medium); }
+section[data-block="hero"][data-height="large"]      { height: var(--pw-hero-height-large); }
+section[data-block="hero"][data-height="fullscreen"] { height: var(--pw-hero-height-fullscreen); }
+
+
+/*------------------------------------------------------------------------------------------------
+	Hero Background (Image & Video)
+------------------------------------------------------------------------------------------------*/
+section[data-block="hero"] [data-field="background-image"],
+section[data-block="hero"] [data-field="background-video"] {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+	Hero Grid (Content Layer)
+------------------------------------------------------------------------------------------------*/
+section[data-block="hero"] [data-layout="grid"] {
+	position: relative;
+	z-index: 1;
+	height: 100%;
+}
+
+section[data-block="hero"] [data-layout="grid-item"] {
+	display: flex;
+	height: 100%;
+}
+
+
+/*------------------------------------------------------------------------------------------------
+	Hero Content Positioning
+------------------------------------------------------------------------------------------------*/
+section[data-block="hero"] [data-field="contents"] {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Horizontal */
+section[data-block="hero"] [data-field="contents"][data-h="left"]   { margin-right: auto; }
+section[data-block="hero"] [data-field="contents"][data-h="center"] { margin-left: auto; margin-right: auto; }
+section[data-block="hero"] [data-field="contents"][data-h="right"]  { margin-left: auto; }
+
+/* Vertical */
+section[data-block="hero"] [data-field="contents"][data-v="top"]    { margin-bottom: auto; }
+section[data-block="hero"] [data-field="contents"][data-v="middle"] { margin-top: auto; margin-bottom: auto; }
+section[data-block="hero"] [data-field="contents"][data-v="bottom"] { margin-top: auto; }
