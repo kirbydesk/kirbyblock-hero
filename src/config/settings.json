@@ -1,5 +1,6 @@
 {
-  "heading": true,
+  "tagline": true,
+	"heading": true,
 	"text": true,
   "buttons": true,
   "tab-grid": true

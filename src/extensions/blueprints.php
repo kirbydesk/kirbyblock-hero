@@ -6,6 +6,7 @@
     $defaults = $config['defaults'];
 
 		/* -------------- Allowed Fields --------------*/
+		$defaultTagline = !empty($settings['tagline']);
     $defaultHeading = !empty($settings['heading']);
 		$defaultText = !empty($settings['text']);
 		$defaultButtons = !empty($settings['buttons']);
@@ -18,6 +19,12 @@
 			'headlineContent' => ['extends' => 'pagewizard/headlines/content'],
 		];
 
+		/* -------------- Tagline --------------*/
+		if ($defaultTagline) {
+			$contentFields['tagline'] = [
+				'extends' => 'pagewizard/fields/tagline',
+			];
+		}
 		/* -------------- Heading --------------*/
 		if ($defaultHeading) {
 			$contentFields['heading'] = [

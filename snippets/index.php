@@ -73,6 +73,11 @@ echo ' data-h="'.$block->positionhorizontal()->value().'"';
 echo ' data-v="'.$block->positionvertical()->value().'"';
 echo '>'."\n";
 
+// Tagline
+if (!empty($settings['tagline'])):
+	snippet('tagline', ['content' => $block]);
+endif;
+
 // Heading
 if (!empty($settings['heading'])):
 	snippet('heading', ['content' => $block]);

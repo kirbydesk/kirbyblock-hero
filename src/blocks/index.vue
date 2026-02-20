@@ -42,6 +42,10 @@
 					>
 
 					<div class="contents" :data-h="content.positionhorizontal" :data-v="content.positionvertical">
+
+						<!-- Tagline -->
+						<pwTagline v-if="settings.tagline" :value="content.tagline" />
+
 						<!-- Heading -->
 						<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" />
 
@@ -60,6 +64,7 @@
 
 <script>
 import pwBlockinfo from '@/../../kirby-pagewizard/src/components/blockinfo.vue';
+import pwTagline from '@/../../kirby-pagewizard/src/components/tagline.vue'
 import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue'
 import pwTextarea from '@/../../kirby-pagewizard/src/components/textarea.vue'
 import pwButtons from '@/../../kirby-pagewizard/src/components/buttons.vue'
@@ -69,6 +74,7 @@ import pwColorStyle from '@/../../kirby-pagewizard/src/mixins/colorStyle.js';
 export default {
 	components: {
 		pwBlockinfo,
+		pwTagline,
 		pwHeading,
 		pwTextarea,
 		pwButtons

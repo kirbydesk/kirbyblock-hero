@@ -15,16 +15,61 @@
       options
     };
   }
-  const _sfc_main$4 = {
+  const _sfc_main$5 = {
     props: {
       value: String,
       icon: String,
       layout: String
     }
   };
-  var _sfc_render$4 = function render() {
+  var _sfc_render$5 = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "blockinfo" }, [_c("div", [_c("svg", { staticClass: "k-icon", attrs: { "aria-hidden": "true" } }, [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })]), _vm._v(" " + _vm._s(_vm.value) + " "), _vm.layout ? _c("span", [_vm._v("(" + _vm._s(_vm.layout) + ")")]) : _vm._e()])]);
+  };
+  var _sfc_staticRenderFns$5 = [];
+  _sfc_render$5._withStripped = true;
+  var __component__$5 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$5,
+    _sfc_render$5,
+    _sfc_staticRenderFns$5,
+    false,
+    null,
+    "26526d24"
+  );
+  __component__$5.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/blockinfo.vue";
+  const pwBlockinfo = __component__$5.exports;
+  const _sfc_main$4 = {
+    props: {
+      value: String,
+      content: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    computed: {
+      parsedData() {
+        var _a;
+        const val = ((_a = this.content) == null ? void 0 : _a.tagline) || this.value;
+        if (!val) return { text: "", align: "left" };
+        try {
+          return typeof val === "string" ? JSON.parse(val) : val;
+        } catch (e) {
+          return { text: val, align: "left" };
+        }
+      },
+      text() {
+        const { text = "" } = this.parsedData;
+        return text;
+      },
+      align() {
+        const { align = "left" } = this.parsedData;
+        return align;
+      }
+    }
+  };
+  var _sfc_render$4 = function render() {
+    var _vm = this, _c = _vm._self._c;
+    return _c("div", { staticClass: "pwTagline", attrs: { "data-align": _vm.align } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.text) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.tagline.placeholder")) + " ")])]);
   };
   var _sfc_staticRenderFns$4 = [];
   _sfc_render$4._withStripped = true;
@@ -34,10 +79,10 @@
     _sfc_staticRenderFns$4,
     false,
     null,
-    "26526d24"
+    "2287a490"
   );
-  __component__$4.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/blockinfo.vue";
-  const pwBlockinfo = __component__$4.exports;
+  __component__$4.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/tagline.vue";
+  const pwTagline = __component__$4.exports;
   const _sfc_main$3 = {
     props: {
       value: String,
@@ -90,29 +135,11 @@
   const _sfc_main$2 = {
     props: {
       value: String,
-      content: {
-        type: Object,
-        default: () => ({})
-      }
+      align: { type: String, default: "left" }
     },
     computed: {
-      parsedData() {
-        var _a;
-        const val = ((_a = this.content) == null ? void 0 : _a.text) || this.value;
-        if (!val) return { text: "", align: "left" };
-        try {
-          return typeof val === "string" ? JSON.parse(val) : val;
-        } catch (e) {
-          return { text: val, align: "left" };
-        }
-      },
       text() {
-        const { text = "" } = this.parsedData;
-        return text;
-      },
-      align() {
-        const { align = "left" } = this.parsedData;
-        return align;
+        return this.value || "";
       }
     },
     methods: {
@@ -234,6 +261,7 @@
   const _sfc_main = {
     components: {
       pwBlockinfo,
+      pwTagline,
       pwHeading,
       pwTextarea,
       pwButtons
@@ -310,7 +338,7 @@
       ..._vm.content.backgroundtype === "image" && _vm.backgroundImageUrl && _vm.focusReady ? { "--background-image": `url('${_vm.backgroundImageUrl}')`, "--background-position": _vm.imageFocus } : { "--background-image": "none" },
       "borderRadius": "var(--rounded)",
       "aspectRatio": _vm.heightRatio
-    } }, [_vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? _c("video", { staticClass: "background-video", attrs: { "src": _vm.content.video[0].url, "muted": "", "playsinline": "" }, domProps: { "muted": true } }) : _vm._e(), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents", attrs: { "data-h": _vm.content.positionhorizontal, "data-v": _vm.content.positionvertical } }, [_vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level } }) : _vm._e(), _vm.settings.text ? _c("pwTextarea", { attrs: { "value": _vm.content.text } }) : _vm._e(), _vm.settings.buttons ? _c("pwButtons", { attrs: { "value": _vm.content.buttons, "align": _vm.content.buttonsalignment } }) : _vm._e()], 1)])])])], 1);
+    } }, [_vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? _c("video", { staticClass: "background-video", attrs: { "src": _vm.content.video[0].url, "muted": "", "playsinline": "" }, domProps: { "muted": true } }) : _vm._e(), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents", attrs: { "data-h": _vm.content.positionhorizontal, "data-v": _vm.content.positionvertical } }, [_vm.settings.tagline ? _c("pwTagline", { attrs: { "value": _vm.content.tagline } }) : _vm._e(), _vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level } }) : _vm._e(), _vm.settings.text ? _c("pwTextarea", { attrs: { "value": _vm.content.text } }) : _vm._e(), _vm.settings.buttons ? _c("pwButtons", { attrs: { "value": _vm.content.buttons, "align": _vm.content.buttonsalignment } }) : _vm._e()], 1)])])])], 1);
   };
   var _sfc_staticRenderFns = [];
   _sfc_render._withStripped = true;

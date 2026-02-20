@@ -22,6 +22,22 @@ svg[data-v-26526d24] {
 }
 }
 
+div.pwTagline[data-v-2287a490] {
+  font-size: var(--text-sm);
+	line-height: var(--text-line-height);
+	margin-bottom: var(--spacing-1);
+	color: var(--pw-color-tagline, inherit);
+&[data-align="left"][data-v-2287a490] {
+    text-align: left;
+}
+&[data-align="center"][data-v-2287a490] {
+    text-align: center;
+}
+&[data-align="right"][data-v-2287a490] {
+    text-align: right;
+}
+}
+
 div.pwHeading[data-v-ad832d63] {
 	margin-bottom: var(--spacing-2);
 	line-height: var(--text-line-height);
