@@ -3,12 +3,15 @@
     /* -------------- Config --------------*/
     $config   = pwConfig::load('pwhero');
     $settings = $config['settings'];
-    $defaults = $config['defaults'];
+    $tabSettings = $config['tabs'];
+		$defaults    = $config['defaults'];
+		$fields      = $config['fields'];
+		$editor      = $config['editor'];
 
 		/* -------------- Allowed Fields --------------*/
 		$defaultTagline = !empty($settings['tagline']);
-    $defaultHeading = !empty($settings['heading']);
-		$defaultText = !empty($settings['text']);
+		$defaultHeading = !empty($settings['heading']);
+		$defaultEditor = !empty($settings['editor']);
 		$defaultButtons = !empty($settings['buttons']);
 
 		/* -------------- Tabs --------------*/
@@ -23,25 +26,26 @@
 		if ($defaultTagline) {
 			$contentFields['tagline'] = [
 				'extends' => 'pagewizard/fields/tagline',
+				'align'   => $fields['align-tagline'],
 			];
 		}
 		/* -------------- Heading --------------*/
 		if ($defaultHeading) {
 			$contentFields['heading'] = [
 				'extends' => 'pagewizard/fields/heading',
+				'align'   => $fields['align-heading'],
 			];
 		}
-		/* -------------- Text --------------*/
-		if ($defaultText) {
-			$contentFields['text'] = [
-				'extends' => 'pagewizard/fields/text-textarea',
-			];
+		/* -------------- Editor --------------*/
+		if ($defaultEditor) {
+			$contentFields['editor'] = pwEditor::contentField($defaults, $editor, $settings, $fields);
 		}
 		/* -------------- Buttons --------------*/
 		if ($defaultButtons) {
 			$contentFields['buttonsAlignment'] = [
-				'type' => 'pwalign',
-				'default' => $defaults['buttons-alignment'] ?? 'left',
+				'type'    => 'pwalign',
+				'align'   => $fields['align-buttons'],
+				'default' => $fields['align-buttons'],
 			];
 			$contentFields['buttons'] = [
 				'extends' => 'blocks/pwButtons',
@@ -96,7 +100,7 @@
 		]);
 
 		/* -------------- Common Tabs (grid, spacing, theme) --------------*/
-		pwConfig::buildTabs('pwhero', $defaults, $settings, $tabs);
+		pwConfig::buildTabs('pwhero', $defaults, $tabSettings, $tabs);
 
 		/* -------------- Settings Tab --------------*/
 		$tabs['settings'] = pwSettings::options('pwhero', $defaults);

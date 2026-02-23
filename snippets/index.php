@@ -83,12 +83,9 @@ if (!empty($settings['heading'])):
 	snippet('heading', ['content' => $block]);
 endif;
 
-// Text (textarea only for hero)
-if (!empty($settings['text']) && $block->text()->isNotEmpty()):
-	$obj = json_decode($block->text()->value(), true);
-	if (!empty($obj['text'])):
-		echo '<div data-field="textarea" data-align="'.($obj['align'] ?? 'left').'">'.$obj['text'].'</div>'."\n";
-	endif;
+// Editor
+if (!empty($settings['editor'])):
+	snippet('editor', ['content' => $block]);
 endif;
 
 // Buttons

@@ -44,16 +44,17 @@
 					<div class="contents" :data-h="content.positionhorizontal" :data-v="content.positionvertical">
 
 						<!-- Tagline -->
-						<pwTagline v-if="settings.tagline" :value="content.tagline" />
+						<pwTagline v-if="settings.tagline" :value="content.tagline" :alignDefault="fieldDefaults['align-tagline']" />
 
 						<!-- Heading -->
-						<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" />
+						<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" :alignDefault="fieldDefaults['align-heading']" />
 
-						<!-- Textarea -->
-						<pwTextarea v-if="settings.text" :value="content.text" />
+						<!-- Editor -->
+						<pwEditor v-if="settings.editor" :content="content" :alignDefault="fieldDefaults['align-editor']" />
 
 						<!-- Buttons -->
-						<pwButtons v-if="settings.buttons" :value="content.buttons" :align="content.buttonsalignment" />
+						<pwButtons v-if="settings.buttons" :value="content.buttons" :align="content.buttonsalignment || fieldDefaults['align-buttons']" />
+
 					</div>
 
 				</div>
@@ -66,7 +67,7 @@
 import pwBlockinfo from '@/../../kirby-pagewizard/src/components/blockinfo.vue';
 import pwTagline from '@/../../kirby-pagewizard/src/components/tagline.vue'
 import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue'
-import pwTextarea from '@/../../kirby-pagewizard/src/components/textarea.vue'
+import pwEditor from '@/../../kirby-pagewizard/src/components/editor.vue'
 import pwButtons from '@/../../kirby-pagewizard/src/components/buttons.vue'
 import pwGridStyle from '@/../../kirby-pagewizard/src/mixins/gridStyle.js';
 import pwColorStyle from '@/../../kirby-pagewizard/src/mixins/colorStyle.js';
@@ -76,13 +77,14 @@ export default {
 		pwBlockinfo,
 		pwTagline,
 		pwHeading,
-		pwTextarea,
+		pwEditor,
 		pwButtons
 	},
 	mixins: [pwGridStyle, pwColorStyle],
 	data() {
 		return {
 			settings: {},
+			fieldDefaults: {},
 			imageFocus: '50% 50%',
 			focusReady: false
 		}
@@ -121,6 +123,14 @@ export default {
 		}
 	},
 	computed: {
+		editorMode() {
+			try {
+				const data = JSON.parse(this.content.editor);
+				return data.mode || 'textarea';
+			} catch(e) {
+				return 'textarea';
+			}
+		},
 		heightRatio() {
 			const ratios = {
 				auto: '5/1',
