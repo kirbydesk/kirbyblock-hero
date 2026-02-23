@@ -97,6 +97,25 @@
 					'backgroundType' => 'video'
 				]
 			],
+			'headlineEffects' => ['extends' => 'pagewizard/headlines/effects'],
+			'fade' => [
+				'extends' => 'pagewizard/fields/fade',
+				'default' => $defaults['fade']
+			],
+			'fadeSize' => [
+				'extends' => 'pagewizard/fields/fade-size',
+				'default' => $defaults['fade-size'],
+				'when'    => [
+					'fade' => true
+				]
+			],
+			'fadePosition' => [
+				'extends' => 'pagewizard/fields/fade-position',
+				'default' => $defaults['fade-position'],
+				'when'    => [
+					'fade' => true
+				]
+			]
 		]);
 
 		/* -------------- Common Tabs (grid, spacing, theme) --------------*/
