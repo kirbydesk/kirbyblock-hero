@@ -5,26 +5,32 @@
     "align-editor": "left",
     "align-buttons": "left"
   },
-  "block": {
-		"grid-size-sm": 12,
-		"grid-size-md": 12,
-		"grid-size-lg": 12,
-		"grid-size-xl": 12,
-		"grid-offset-sm": 1,
-		"grid-offset-md": 1,
-		"grid-offset-lg": 1,
-		"grid-offset-xl": 1,
-		"margin-top": false,
-		"margin-bottom": false,
-		"padding-top": true,
-		"padding-right": true,
-		"padding-bottom": true,
-		"padding-left": true,
-		"height": "small",
-		"style": "variant",
-		"background-size": "content",
-		"background-type": "color",
-		"horizontal-content-position": "left",
-		"vertical-content-position": "middle"
+  "layout": {
+    "padding-top": true,
+    "padding-right": true,
+    "padding-bottom": true,
+    "padding-left": true,
+    "horizontal-content-position": "left",
+    "vertical-content-position": "middle"
+  },
+  "style": {
+    "style": "variant",
+    "background-size": "content",
+    "height": "small",
+    "background-type": "color"
+  },
+  "grid": {
+    "grid-size-sm": 12,
+    "grid-size-md": 12,
+    "grid-size-lg": 12,
+    "grid-size-xl": 12,
+    "grid-offset-sm": 1,
+    "grid-offset-md": 1,
+    "grid-offset-lg": 1,
+    "grid-offset-xl": 1
+  },
+  "settings": {
+    "margin-top": false,
+    "margin-bottom": false
   }
 }

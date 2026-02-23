@@ -93,6 +93,7 @@ export default {
 		try {
 			const response = await this.$api.get('pagewizard/settings/pwhero');
 			this.settings = response.settings;
+			this.fieldDefaults = response.fields || {};
 		} catch (e) {
 			this.settings = {};
 		}
@@ -123,14 +124,6 @@ export default {
 		}
 	},
 	computed: {
-		editorMode() {
-			try {
-				const data = JSON.parse(this.content.editor);
-				return data.mode || 'textarea';
-			} catch(e) {
-				return 'textarea';
-			}
-		},
 		heightRatio() {
 			const ratios = {
 				auto: '5/1',

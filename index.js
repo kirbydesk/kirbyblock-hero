@@ -1487,6 +1487,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
       try {
         const response = await this.$api.get("pagewizard/settings/pwhero");
         this.settings = response.settings;
+        this.fieldDefaults = response.fields || {};
       } catch (e) {
         this.settings = {};
       }
@@ -1520,14 +1521,6 @@ Please report this to https://github.com/markedjs/marked.`, e) {
       }
     },
     computed: {
-      editorMode() {
-        try {
-          const data = JSON.parse(this.content.editor);
-          return data.mode || "textarea";
-        } catch (e) {
-          return "textarea";
-        }
-      },
       heightRatio() {
         const ratios = {
           auto: "5/1",
