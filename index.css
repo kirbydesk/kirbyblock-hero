@@ -249,7 +249,7 @@ div.background[data-v-823ce87b]::before {
 		inset: 0;
 		z-index: 0;
 		background-image: var(--background-image, none);
-		background-size: cover;
+		block-size: cover;
 		background-position: var(--background-position, center);
 		background-repeat: no-repeat;
 }

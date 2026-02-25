@@ -20,7 +20,7 @@ echo ' data-padding-right="'.$block->paddingright()->value().'"';
 echo ' data-padding-bottom="'.$block->paddingbottom()->value().'"';
 echo ' data-padding-left="'.$block->paddingleft()->value().'"';
 echo ' data-style="'.$block->style()->value().'"';
-echo ' data-background-size="'.$block->backgroundsize()->value().'"';
+echo ' data-block-size="'.$block->blocksize()->value().'"';
 echo ' data-background-type="'.$block->backgroundtype()->value().'"';
 echo ' data-height="'.$block->height()->value().'"';
 e(!empty($settings['buttons']) && $block->content()->style()->value() === 'custom' && $block->buttonstyle()->value() === 'variant', ' data-button-style="variant"');

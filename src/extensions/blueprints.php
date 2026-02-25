@@ -72,13 +72,13 @@
 
 		/* -------------- Style Tab --------------*/
 		$tabs['style'] = pwStyle::options('pwhero', $defaults, [
-			'height' => [
-				'extends' => 'pagewizard/fields/height',
-				'default' => $defaults['height']
-			],
 			'backgroundType' => [
 				'extends' => 'pagewizard/fields/background-type',
 				'default' => $defaults['background-type']
+			],
+			'height' => [
+				'extends' => 'pagewizard/fields/height',
+				'default' => $defaults['height']
 			],
 			'image' => [
 				'extends' => 'pagewizard/fields/image',
@@ -96,27 +96,34 @@
 				'when'    => [
 					'backgroundType' => 'video'
 				]
-			],
-			'headlineEffects' => ['extends' => 'pagewizard/headlines/effects'],
-			'fade' => [
-				'extends' => 'pagewizard/fields/fade',
-				'default' => $defaults['fade']
-			],
-			'fadeSize' => [
-				'extends' => 'pagewizard/fields/fade-size',
-				'default' => $defaults['fade-size'],
-				'when'    => [
-					'fade' => true
-				]
-			],
-			'fadePosition' => [
-				'extends' => 'pagewizard/fields/fade-position',
-				'default' => $defaults['fade-position'],
-				'when'    => [
-					'fade' => true
-				]
 			]
 		]);
+
+		/* -------------- Effects Tab --------------*/
+		$tabs['effects'] = [
+			'label'  => 'pw.tab.effects',
+			'fields' => [
+				'headlineEffects' => ['extends' => 'pagewizard/headlines/effects'],
+				'fade' => [
+					'extends' => 'pagewizard/fields/fade',
+					'default' => $defaults['fade']
+				],
+				'fadeSize' => [
+					'extends' => 'pagewizard/fields/fade-size',
+					'default' => $defaults['fade-size'],
+					'when'    => [
+						'fade' => true
+					]
+				],
+				'fadePosition' => [
+					'extends' => 'pagewizard/fields/fade-position',
+					'default' => $defaults['fade-position'],
+					'when'    => [
+						'fade' => true
+					]
+				]
+			]
+		];
 
 		/* -------------- Common Tabs (grid, spacing, theme) --------------*/
 		pwConfig::buildTabs('pwhero', $defaults, $tabSettings, $tabs);

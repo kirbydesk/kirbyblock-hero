@@ -15,7 +15,7 @@
   },
   "style": {
     "style": "variant",
-    "background-size": "content",
+    "block-size": "content",
     "height": "small",
     "background-type": "color",
 		"fade": false,

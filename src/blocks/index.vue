@@ -160,7 +160,7 @@ div.pwPreview[data-kirbyblock="hero"] {
 		inset: 0;
 		z-index: 0;
 		background-image: var(--background-image, none);
-		background-size: cover;
+		block-size: cover;
 		background-position: var(--background-position, center);
 		background-repeat: no-repeat;
 	}
