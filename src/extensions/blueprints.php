@@ -58,7 +58,7 @@
 		];
 
 		/* -------------- Layout Tab --------------*/
-		$tabs['layout'] = pwLayout::options('pwhero', $defaults, [
+		pwConfig::addTab($tabs, 'layout', $tabSettings['layout'] ?? true, pwLayout::options('pwhero', $defaults, [
 			'headlineContentposition' => ['extends' => 'pagewizard/headlines/contentposition'],
 			'positionHorizontal' => [
 				'extends' => 'pagewizard/fields/position-horizontal',
@@ -68,10 +68,10 @@
 				'extends' => 'pagewizard/fields/position-vertical',
 				'default' => $defaults['vertical-content-position']
 			],
-		]);
+		]));
 
 		/* -------------- Style Tab --------------*/
-		$tabs['style'] = pwStyle::options('pwhero', $defaults, [
+		pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwhero', $defaults, [
 			'backgroundType' => [
 				'extends' => 'pagewizard/fields/background-type',
 				'default' => $defaults['background-type']
@@ -97,10 +97,10 @@
 					'backgroundType' => 'video'
 				]
 			]
-		]);
+		]));
 
 		/* -------------- Effects Tab --------------*/
-		$tabs['effects'] = [
+		pwConfig::addTab($tabs, 'effects', $tabSettings['effects'] ?? true, [
 			'label'  => 'pw.tab.effects',
 			'fields' => [
 				'headlineEffects' => ['extends' => 'pagewizard/headlines/effects'],
@@ -123,13 +123,13 @@
 					]
 				]
 			]
-		];
+		]);
 
-		/* -------------- Common Tabs (grid, spacing, theme) --------------*/
-		pwConfig::buildTabs('pwhero', $defaults, $tabSettings, $tabs);
+		/* -------------- Grid Tab --------------*/
+		pwConfig::addTab($tabs, 'grid', $tabSettings['grid'] ?? false, pwGrid::layout('pwhero', $defaults));
 
 		/* -------------- Settings Tab --------------*/
-		$tabs['settings'] = pwSettings::options('pwhero', $defaults);
+		pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwhero', $defaults));
 
 		/* -------------- Blueprint --------------*/
 		return [

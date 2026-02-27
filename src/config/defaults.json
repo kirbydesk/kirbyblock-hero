@@ -14,10 +14,11 @@
     "vertical-content-position": "middle"
   },
   "style": {
-    "style": "variant",
-    "block-size": "content",
+    "style": "default",
     "height": "small",
-    "background-type": "color",
+    "background-type": "color"
+  },
+	"effects": {
 		"fade": false,
 		"fade-size": "medium",
 		"fade-position": "top"
@@ -33,6 +34,7 @@
     "grid-offset-xl": 1
   },
   "settings": {
+		"block-size": "content",
     "margin-top": false,
     "margin-bottom": false
   }

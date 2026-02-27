@@ -2,6 +2,7 @@
 	"name": "kirbydesk/kirbyblock-hero",
 	"description": "Hero Block for Kirby CMS",
 	"type": "kirby-plugin",
+	"version": "1.0.1",
 	"keywords": [
 		"kirby",
 		"kirby-plugin"
@@ -20,6 +21,6 @@
 	},
 	"require": {
 		"getkirby/composer-installer": "^1.2",
-		"kirbydesk/kirby-pagewizard": "dev-main"
+		"kirbydesk/kirby-pagewizard": "^1.0"
 	}
 }

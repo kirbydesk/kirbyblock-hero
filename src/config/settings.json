@@ -2,10 +2,14 @@
   "fields": {
     "tagline": true,
     "heading": true,
-    "editor": ["textarea"],
+    "editor": ["textarea", "writer"],
     "buttons": true
   },
   "tabs": {
-    "grid": true
+    "layout": true,
+    "style": true,
+    "effects": false,
+    "grid": true,
+    "settings": true
   }
 }
