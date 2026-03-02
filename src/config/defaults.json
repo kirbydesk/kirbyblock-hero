@@ -1,5 +1,5 @@
 {
-  "fields": {
+  "content": {
     "align-tagline": "left",
     "align-heading": "left",
     "align-editor": "left",
@@ -11,17 +11,21 @@
     "padding-bottom": true,
     "padding-left": true,
     "horizontal-content-position": "left",
-    "vertical-content-position": "middle"
+    "vertical-content-position": "middle",
+    "radius-top-left": false,
+    "radius-top-right": false,
+    "radius-bottom-left": false,
+    "radius-bottom-right": false
   },
   "style": {
-    "style": "default",
+    "theme": "default",
     "height": "small",
     "background-type": "color"
   },
-	"effects": {
-		"fade": false,
-		"fade-size": "medium",
-		"fade-position": "top"
+  "effects": {
+    "fade": false,
+    "fade-size": "medium",
+    "fade-position": "top"
   },
   "grid": {
     "grid-size-sm": 12,
@@ -34,7 +38,7 @@
     "grid-offset-xl": 1
   },
   "settings": {
-		"block-size": "content",
+    "block-size": "content",
     "margin-top": false,
     "margin-bottom": false
   }

@@ -2,7 +2,7 @@
 
     /* -------------- Config --------------*/
     $config   = pwConfig::load('pwhero');
-    $settings = $config['settings'];
+    $settings = $config['content'];
     $tabSettings = $config['tabs'];
 		$defaults    = $config['defaults'];
 		$fields      = $config['fields'];
@@ -68,7 +68,7 @@
 				'extends' => 'pagewizard/fields/position-vertical',
 				'default' => $defaults['vertical-content-position']
 			],
-		]));
+		], $config['layout'] ?? []));
 
 		/* -------------- Style Tab --------------*/
 		pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwhero', $defaults, [
@@ -97,7 +97,7 @@
 					'backgroundType' => 'video'
 				]
 			]
-		]));
+		], $config['style'] ?? []));
 
 		/* -------------- Effects Tab --------------*/
 		pwConfig::addTab($tabs, 'effects', $tabSettings['effects'] ?? true, [
@@ -129,7 +129,7 @@
 		pwConfig::addTab($tabs, 'grid', $tabSettings['grid'] ?? false, pwGrid::layout('pwhero', $defaults));
 
 		/* -------------- Settings Tab --------------*/
-		pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwhero', $defaults));
+		pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwhero', $defaults, [], $config['settings'] ?? []));
 
 		/* -------------- Blueprint --------------*/
 		return [

@@ -1,9 +1,26 @@
 {
   "fields": {
-    "tagline": true,
-    "heading": true,
-    "editor": ["textarea", "writer"],
-    "buttons": true
+    "content": {
+      "tagline": true,
+      "heading": true,
+      "editor": [
+        "textarea",
+        "writer"
+      ],
+      "buttons": true
+    },
+    "layout": {
+      "padding": true,
+      "radius": true
+    },
+    "style": {
+      "theme": true
+    },
+    "settings": {
+      "fragment": true,
+      "block-size": true,
+      "margin": true
+    }
   },
   "tabs": {
     "layout": true,
