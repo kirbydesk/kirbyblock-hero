@@ -6,6 +6,48 @@
 
 
 /*------------------------------------------------------------------------------------------------
+	Element Margins
+------------------------------------------------------------------------------------------------*/
+
+/* -------------- Tagline --------------*/
+[data-field="tagline"] {
+	+ [data-field="heading"] {
+		margin-top: 0.5rem;
+	}
+	+ [data-field="textarea"],
+	+ [data-field="writer"],
+	+ [data-field="markdown"] {
+		margin-top: 0.3rem;
+	}
+	+ [data-field="buttons"] {
+		margin-top: 1rem;
+	}
+}
+
+/* -------------- Heading --------------*/
+[data-field="heading"] {
+	+ [data-field="textarea"],
+	+ [data-field="writer"],
+	+ [data-field="markdown"] {
+		margin-top: 0.5rem;
+	}
+	+ [data-field="buttons"] {
+		margin-top: 1.2rem;
+	}
+}
+
+/* -------------- Texts --------------*/
+[data-field="textarea"],
+[data-field="writer"],
+[data-field="markdown"] {
+	+ [data-field="buttons"] {
+		margin-top: 1.2rem;
+	}
+}
+
+
+
+/*------------------------------------------------------------------------------------------------
 	Hero Height Variables
 ------------------------------------------------------------------------------------------------*/
 :root {

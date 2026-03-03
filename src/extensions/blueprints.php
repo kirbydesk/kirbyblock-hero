@@ -34,11 +34,13 @@
 			$contentFields['heading'] = [
 				'extends' => 'pagewizard/fields/heading',
 				'align'   => $fields['align-heading'],
+				'size'   => 'normal'
 			];
 		}
 		/* -------------- Editor --------------*/
 		if ($defaultEditor) {
 			$contentFields['editor'] = pwEditor::contentField($defaults, $editor, $settings, $fields);
+			$contentFields['editor']['size'] = 'normal';
 		}
 		/* -------------- Buttons --------------*/
 		if ($defaultButtons) {
@@ -82,8 +84,8 @@
 			],
 			'image' => [
 				'extends' => 'pagewizard/fields/image',
-				'uploads' => 'pwHero',
-				'query' => 'page.images.template("pwHero")',
+				'uploads' => 'pwBackgroundimage',
+				'query' => 'page.images.template("pwBackgroundimage")',
 				'when'    => [
 					'backgroundType' => 'image'
 				]
