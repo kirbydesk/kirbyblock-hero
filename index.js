@@ -1541,6 +1541,18 @@ Please report this to https://github.com/markedjs/marked.`, e) {
         };
         return ratios[this.content.height] || "21/9";
       },
+      blurAmount() {
+        if (this.content.backgroundtype === "image") return parseInt(this.content.blurimage) || 0;
+        if (this.content.backgroundtype === "video") return parseInt(this.content.blurvideo) || 0;
+        return 0;
+      },
+      overlayStyle() {
+        const intensity = parseInt(this.content.overlayintensity) / 100;
+        return { background: `rgba(0,0,0,${intensity})` };
+      },
+      gradientIntensity() {
+        return parseInt(this.content.overlaygradientintensity) / 100;
+      },
       backgroundImageUrl() {
         var _a2;
         if (!this.content.image || !this.content.image.length || !this.content.image[0]) return "";
@@ -1557,8 +1569,9 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "hero", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-hero.name"), "icon": "star" } }), _c("div", { staticClass: "background", style: {
       ..._vm.content.backgroundtype === "image" && _vm.backgroundImageUrl && _vm.focusReady ? { "--background-image": `url('${_vm.backgroundImageUrl}')`, "--background-position": _vm.imageFocus } : { "--background-image": "none" },
       "borderRadius": "var(--rounded)",
-      "aspectRatio": _vm.heightRatio
-    } }, [_vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? _c("video", { staticClass: "background-video", attrs: { "src": _vm.content.video[0].url, "muted": "", "playsinline": "" }, domProps: { "muted": true } }) : _vm._e(), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents", attrs: { "data-h": _vm.content.positionhorizontal, "data-v": _vm.content.positionvertical } }, [_vm.settings.tagline ? _c("pwTagline", { attrs: { "value": _vm.content.tagline, "alignDefault": _vm.fieldDefaults["align-tagline"] } }) : _vm._e(), _vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level, "alignDefault": _vm.fieldDefaults["align-heading"] } }) : _vm._e(), _vm.settings.editor ? _c("pwEditor", { attrs: { "content": _vm.content, "alignDefault": _vm.fieldDefaults["align-editor"] } }) : _vm._e(), _vm.settings.buttons ? _c("pwButtons", { attrs: { "value": _vm.content.buttons, "align": _vm.content.buttonsalignment || _vm.fieldDefaults["align-buttons"] } }) : _vm._e()], 1)])])])], 1);
+      "aspectRatio": _vm.heightRatio,
+      ..._vm.blurAmount > 0 ? { "--blur-amount": _vm.blurAmount + "px" } : {}
+    }, attrs: { "data-blur": _vm.blurAmount > 0 ? "" : null } }, [_vm.content.backgroundtype === "video" && _vm.content.video && _vm.content.video.length ? _c("video", { staticClass: "background-video", attrs: { "src": _vm.content.video[0].url, "muted": "", "playsinline": "" }, domProps: { "muted": true } }) : _vm._e(), _vm.content.overlaytype === "solid" ? _c("div", { staticClass: "overlay", style: _vm.overlayStyle, attrs: { "data-overlay": "solid" } }) : _vm.content.overlaytype === "gradient" ? _c("div", { staticClass: "overlay", style: { "--overlay-intensity": _vm.gradientIntensity }, attrs: { "data-overlay": "gradient", "data-size": _vm.content.overlaysize, "data-position": _vm.content.overlayposition } }) : _vm._e(), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents", attrs: { "data-h": _vm.content.positionhorizontal, "data-v": _vm.content.positionvertical } }, [_vm.settings.tagline ? _c("pwTagline", { attrs: { "value": _vm.content.tagline, "alignDefault": _vm.fieldDefaults["align-tagline"] } }) : _vm._e(), _vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level, "alignDefault": _vm.fieldDefaults["align-heading"] } }) : _vm._e(), _vm.settings.editor ? _c("pwEditor", { attrs: { "content": _vm.content, "alignDefault": _vm.fieldDefaults["align-editor"] } }) : _vm._e(), _vm.settings.buttons ? _c("pwButtons", { attrs: { "value": _vm.content.buttons, "align": _vm.content.buttonsalignment || _vm.fieldDefaults["align-buttons"] } }) : _vm._e()], 1)])])])], 1);
   };
   var _sfc_staticRenderFns = [];
   _sfc_render._withStripped = true;

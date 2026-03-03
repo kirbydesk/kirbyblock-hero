@@ -106,22 +106,43 @@
 			'label'  => 'pw.tab.effects',
 			'fields' => [
 				'headlineEffects' => ['extends' => 'pagewizard/headlines/effects'],
-				'fade' => [
-					'extends' => 'pagewizard/fields/fade',
-					'default' => $defaults['fade']
-				],
-				'fadeSize' => [
-					'extends' => 'pagewizard/fields/fade-size',
-					'default' => $defaults['fade-size'],
+				'blurImage' => [
+					'extends' => 'pagewizard/fields/blur',
 					'when'    => [
-						'fade' => true
+						'backgroundType' => 'image'
 					]
 				],
-				'fadePosition' => [
-					'extends' => 'pagewizard/fields/fade-position',
-					'default' => $defaults['fade-position'],
+				'blurVideo' => [
+					'extends' => 'pagewizard/fields/blur',
 					'when'    => [
-						'fade' => true
+						'backgroundType' => 'video'
+					]
+				],
+				'overlayType' => [
+					'extends' => 'pagewizard/fields/overlay-type',
+				],
+				'overlayIntensity' => [
+					'extends' => 'pagewizard/fields/overlay-intensity',
+					'when'    => [
+						'overlayType' => 'solid'
+					]
+				],
+				'overlayGradientIntensity' => [
+					'extends' => 'pagewizard/fields/overlay-intensity',
+					'when'    => [
+						'overlayType' => 'gradient'
+					]
+				],
+				'overlaySize' => [
+					'extends' => 'pagewizard/fields/overlay-size',
+					'when'    => [
+						'overlayType' => 'gradient'
+					]
+				],
+				'overlayPosition' => [
+					'extends' => 'pagewizard/fields/overlay-position',
+					'when'    => [
+						'overlayType' => 'gradient'
 					]
 				]
 			]

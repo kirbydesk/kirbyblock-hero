@@ -15,12 +15,14 @@
 
 		<div
 			class="background"
+			:data-blur="blurAmount > 0 ? '' : null"
 			:style="{
 				...(content.backgroundtype === 'image' && backgroundImageUrl && focusReady
 					? { '--background-image': `url('${backgroundImageUrl}')`, '--background-position': imageFocus }
 					: { '--background-image': 'none' }),
 				'borderRadius': 'var(--rounded)',
-				'aspectRatio': heightRatio
+				'aspectRatio': heightRatio,
+				...(blurAmount > 0 ? { '--blur-amount': blurAmount + 'px' } : {})
 			}"
 			>
 			<video
@@ -30,6 +32,23 @@
 				playsinline
 				class="background-video"
 			></video>
+
+			<!-- Overlay: solid -->
+			<div
+				v-if="content.overlaytype === 'solid'"
+				class="overlay"
+				data-overlay="solid"
+				:style="overlayStyle"
+			></div>
+			<!-- Overlay: gradient -->
+			<div
+				v-else-if="content.overlaytype === 'gradient'"
+				class="overlay"
+				data-overlay="gradient"
+				:data-size="content.overlaysize"
+				:data-position="content.overlayposition"
+				:style="{ '--overlay-intensity': gradientIntensity }"
+			></div>
 
 			<div class="pwGrid">
 				<div
@@ -134,6 +153,18 @@ export default {
 			};
 			return ratios[this.content.height] || '21/9';
 		},
+		blurAmount() {
+			if (this.content.backgroundtype === 'image') return parseInt(this.content.blurimage) || 0;
+			if (this.content.backgroundtype === 'video') return parseInt(this.content.blurvideo) || 0;
+			return 0;
+		},
+		overlayStyle() {
+			const intensity = parseInt(this.content.overlayintensity) / 100;
+			return { background: `rgba(0,0,0,${intensity})` };
+		},
+		gradientIntensity() {
+			return parseInt(this.content.overlaygradientintensity) / 100;
+		},
 		backgroundImageUrl() {
 			if (!this.content.image || !this.content.image.length || !this.content.image[0]) return '';
 			const srcset = this.content.image[0].image?.srcset;
@@ -173,10 +204,47 @@ div.pwPreview[data-kirbyblock="hero"] {
 		object-fit: cover;
 		z-index: 0;
 	}
+	div.background[data-blur] {
+		&::before        { filter: blur(var(--blur-amount)); transform: scale(1.1); }
+		.background-video { filter: blur(var(--blur-amount)); transform: scale(1.1); }
+	}
+	.overlay {
+		position: absolute;
+		pointer-events: none;
+		z-index: 1;
+
+		&[data-overlay="solid"] {
+			inset: 0;
+		}
+
+		&[data-overlay="gradient"] {
+			&[data-position="left"]   { inset: 0 auto 0 0; background: linear-gradient(to right, rgba(0,0,0,var(--overlay-intensity)), transparent); }
+			&[data-position="right"]  { inset: 0 0 0 auto; background: linear-gradient(to left,  rgba(0,0,0,var(--overlay-intensity)), transparent); }
+			&[data-position="top"]    { inset: 0 0 auto 0; background: linear-gradient(to bottom, rgba(0,0,0,var(--overlay-intensity)), transparent); }
+			&[data-position="bottom"] { inset: auto 0 0 0; background: linear-gradient(to top,   rgba(0,0,0,var(--overlay-intensity)), transparent); }
+
+			&[data-position="left"],
+			&[data-position="right"] {
+				height: 100%;
+				&[data-size="small"]  { width: 25%; }
+				&[data-size="medium"] { width: 50%; }
+				&[data-size="large"]  { width: 75%; }
+				&[data-size="xlarge"] { width: 100%; }
+			}
+			&[data-position="top"],
+			&[data-position="bottom"] {
+				width: 100%;
+				&[data-size="small"]  { height: 25%; }
+				&[data-size="medium"] { height: 50%; }
+				&[data-size="large"]  { height: 75%; }
+				&[data-size="xlarge"] { height: 100%; }
+			}
+		}
+	}
 	.pwGrid {
 		position: absolute;
 		inset: 0;
-		z-index: 1;
+		z-index: 2;
 
 		.pwGridItem {
 			background: transparent;

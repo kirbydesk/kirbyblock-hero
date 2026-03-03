@@ -33,6 +33,9 @@ echo ' data-background-type="'.$block->backgroundtype()->value().'"';
 echo ' data-height="'.$block->height()->value().'"';
 e(!empty($settings['buttons']) && $block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() === 'variant', ' data-button-style="variant"');
 echo $block->fragment()->isNotEmpty() ? ' id="'.$block->fragment()->value().'"' : '';
+$backgroundType = $block->backgroundtype()->value();
+$blur = ($backgroundType === 'image') ? intval($block->blurimage()->value()) : (($backgroundType === 'video') ? intval($block->blurvideo()->value()) : 0);
+if ($blur > 0) echo ' data-blur style="--blur-amount:'.$blur.'px"';
 echo '>'."\n";
 
 // Background Image
@@ -62,6 +65,20 @@ if ($block->backgroundtype()->value() === 'video' && $block->video()->isNotEmpty
 		echo '></video>'."\n";
 	endif;
 endif;
+
+// Overlay
+$overlayType = $block->overlaytype()->value();
+if ($overlayType === 'solid') {
+	$intensity = intval($block->overlayintensity()->value()) / 100;
+	echo '<div data-overlay="solid" style="--overlay-intensity:'.$intensity.'"></div>'."\n";
+} elseif ($overlayType === 'gradient') {
+	$intensity = intval($block->overlaygradientintensity()->value()) / 100;
+	echo '<div data-overlay="gradient"';
+	echo ' data-overlay-size="'.$block->overlaysize()->value().'"';
+	echo ' data-overlay-position="'.$block->overlayposition()->value().'"';
+	echo ' style="--overlay-intensity:'.$intensity.'"';
+	echo '></div>'."\n";
+}
 
 // Grid
 echo '<div data-layout="grid"><div data-layout="grid-item"';
