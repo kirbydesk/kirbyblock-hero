@@ -1,6 +1,5 @@
 {
-  "default-mode": "textarea",
-  "marks": ["bold", "italic", "underline", "strike", "link"],
+	"marks": ["bold", "italic", "underline", "strike", "link"],
   "nodes": [],
   "headings": [],
   "toolbar": {

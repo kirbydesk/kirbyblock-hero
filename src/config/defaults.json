@@ -1,9 +1,9 @@
 {
   "content": {
-    "align-tagline": "left",
-    "align-heading": "left",
-    "align-editor": "left",
-    "align-buttons": "left"
+    "tagline": { "align": "left" },
+    "heading": { "align": "left", "level": "h2", "size": "lg" },
+    "editor":  { "align": "left", "size": "normal", "mode": "textarea" },
+    "buttons": { "align": "left" }
   },
   "layout": {
     "padding-top": true,
@@ -21,11 +21,6 @@
     "theme": "default",
     "height": "small",
     "background-type": "color"
-  },
-  "effects": {
-    "fade": false,
-    "fade-size": "medium",
-    "fade-position": "top"
   },
   "grid": {
     "grid-size-sm": 12,

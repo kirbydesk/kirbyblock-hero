@@ -1,13 +1,29 @@
 {
+	"tabs": {
+    "layout": true,
+    "style": true,
+    "effects": true,
+    "grid": true,
+    "settings": true
+  },
   "fields": {
     "content": {
-      "tagline": true,
-      "heading": true,
-      "editor": [
-        "textarea",
-        "writer"
-      ],
-      "buttons": true
+      "tagline": {
+        "align": [ "left", "center", "right" ]
+      },
+      "heading": {
+        "align": [ "left", "center", "right" ],
+        "level": [ "h1", "h2", "h3", "h4" ],
+        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
+      },
+      "editor": {
+        "mode": [ "textarea", "writer" ],
+        "align": [ "left", "center", "right" ],
+        "sizes": [ "normal", "large" ]
+      },
+      "buttons": {
+        "align": [ "left", "center", "right" ]
+      }
     },
     "layout": {
       "padding": true,
@@ -16,17 +32,14 @@
     "style": {
       "theme": true
     },
+    "effects": {
+      "blur": true,
+      "overlay": true
+    },
     "settings": {
       "fragment": true,
       "block-size": true,
       "margin": true
     }
-  },
-  "tabs": {
-    "layout": true,
-    "style": true,
-    "effects": true,
-    "grid": true,
-    "settings": true
   }
 }
