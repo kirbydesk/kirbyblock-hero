@@ -1411,13 +1411,13 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     computed: {
       gridVars() {
         return {
-          "--grid-start-sm": Number(this.content.gridoffsetsm),
+          "--grid-start-sm": Number(this.content.gridoffsetsm) + 1,
           "--grid-span-sm": Number(this.content.gridsizesm),
-          "--grid-start-md": Number(this.content.gridoffsetmd),
+          "--grid-start-md": Number(this.content.gridoffsetmd) + 1,
           "--grid-span-md": Number(this.content.gridsizemd),
-          "--grid-start-lg": Number(this.content.gridoffsetlg),
+          "--grid-start-lg": Number(this.content.gridoffsetlg) + 1,
           "--grid-span-lg": Number(this.content.gridsizelg),
-          "--grid-start-xl": Number(this.content.gridoffsetxl),
+          "--grid-start-xl": Number(this.content.gridoffsetxl) + 1,
           "--grid-span-xl": Number(this.content.gridsizexl)
         };
       }

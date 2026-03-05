@@ -2,7 +2,7 @@
 	"name": "kirbydesk/kirbyblock-hero",
 	"description": "Hero Block for Kirby CMS",
 	"type": "kirby-plugin",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"keywords": [
 		"kirby",
 		"kirby-plugin"

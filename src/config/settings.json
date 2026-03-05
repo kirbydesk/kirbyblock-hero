@@ -19,7 +19,7 @@
       "editor": {
         "mode": [ "textarea", "writer" ],
         "align": [ "left", "center", "right" ],
-        "sizes": [ "normal", "large" ]
+        "sizes": [ "normal", "lg", "xl", "2xl", "3xl" ]
       },
       "buttons": {
         "align": [ "left", "center", "right" ]
