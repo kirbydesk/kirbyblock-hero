@@ -27,10 +27,10 @@
     "grid-size-md": 12,
     "grid-size-lg": 12,
     "grid-size-xl": 12,
-    "grid-offset-sm": 1,
-    "grid-offset-md": 1,
-    "grid-offset-lg": 1,
-    "grid-offset-xl": 1
+    "grid-offset-sm": 0,
+    "grid-offset-md": 0,
+    "grid-offset-lg": 0,
+    "grid-offset-xl": 0
   },
   "settings": {
     "block-size": "content",

@@ -346,34 +346,4 @@ div.background[data-blur][data-v-823ce87b] {
 }
 }
 }
-div.pwHeading[data-v-823ce87b] {
-&[data-lvl="h1"][data-v-823ce87b]{
-			font-size: var(--text-3xl);
-&[data-size="large"][data-v-823ce87b]{ font-size: var(--text-4xl);
-}
-&[data-size="xlarge"][data-v-823ce87b]{ font-size: var(--text-5xl);
-}
-}
-&[data-lvl="h2"][data-v-823ce87b]{
-			font-size: var(--text-2xl);
-&[data-size="large"][data-v-823ce87b]{ font-size: var(--text-3xl);
-}
-&[data-size="xlarge"][data-v-823ce87b]{ font-size: var(--text-4xl);
-}
-}
-&[data-lvl="h3"][data-v-823ce87b]{
-			font-size: var(--text-xl);
-&[data-size="large"][data-v-823ce87b]{ font-size: var(--text-2xl);
-}
-&[data-size="xlarge"][data-v-823ce87b]{ font-size: var(--text-3xl);
-}
-}
-&[data-lvl="h4"][data-v-823ce87b]{
-			font-size: var(--text-md);
-&[data-size="large"][data-v-823ce87b]{ font-size: var(--text-xl);
-}
-&[data-size="xlarge"][data-v-823ce87b]{ font-size: var(--text-2xl);
-}
-}
-}
 }
