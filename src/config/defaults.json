@@ -6,8 +6,8 @@
     "buttons": { "align": "left" }
   },
   "layout": {
-    "padding-top": true,
-    "padding-right": true,
+    "padding-top": "large",
+    "padding-right": "large",
     "padding-bottom": true,
     "padding-left": true,
     "horizontal-content-position": "left",
