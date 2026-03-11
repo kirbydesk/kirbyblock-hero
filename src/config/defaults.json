@@ -6,10 +6,10 @@
     "buttons": { "align": "left" }
   },
   "layout": {
-    "padding-top": "large",
-    "padding-right": "large",
-    "padding-bottom": true,
+    "padding-top": "small",
+    "padding-bottom": "small",
     "padding-left": true,
+    "padding-right": true,
     "horizontal-content-position": "left",
     "vertical-content-position": "middle",
     "radius-top-left": false,

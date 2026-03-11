@@ -241,6 +241,11 @@ button[data-v-7bc2765d] {
 .k-button-text.placeholder[data-v-7bc2765d] {
 		opacity: 0.5;
 }
+.pw-external-icon[data-v-7bc2765d] {
+		width: 1em;
+		height: 1em;
+		opacity: 0.7;
+}
 }
 
 div.pwPreview[data-kirbyblock="hero"][data-v-823ce87b] {
