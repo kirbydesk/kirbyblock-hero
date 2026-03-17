@@ -1461,14 +1461,15 @@ Please report this to https://github.com/markedjs/marked.`, e) {
             vars["--pw-color-block-background"] = this.content.backgroundcolor;
           }
           const btnStyle = this.content.buttonstyle || "default";
-          if (btnStyle === "variant" && this.colors.variant) {
-            const btnKeys = Object.keys(this.colors.variant).filter((k2) => k2.startsWith("pw-color-button"));
+          if (btnStyle !== "default" && this.colors[btnStyle]) {
+            const btnKeys = Object.keys(this.colors[btnStyle]).filter((k2) => k2.startsWith("pw-color-button"));
             for (const key of btnKeys) {
-              vars["--" + key] = this.colors.variant[key];
+              vars["--" + key] = this.colors[btnStyle][key];
             }
           }
         } else {
-          const palette = style === "variant" ? { ...this.colors.default, ...this.colors.variant } : this.colors.default;
+          const themePalette = this.colors[style];
+          const palette = themePalette ? { ...this.colors.default, ...themePalette } : this.colors.default;
           for (const [key, value] of Object.entries(palette)) {
             vars["--" + key] = value;
           }

@@ -31,7 +31,7 @@ echo ' data-style="'.$block->theme()->value().'"';
 echo ' data-block-size="'.$block->blocksize()->value().'"';
 echo ' data-background-type="'.$block->backgroundtype()->value().'"';
 echo ' data-height="'.$block->height()->value().'"';
-e(!empty($settings['buttons']) && $block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() === 'variant', ' data-button-style="variant"');
+e(!empty($settings['buttons']) && $block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() !== 'default', ' data-button-style="' . $block->buttonstyle()->value() . '"');
 echo $block->fragment()->isNotEmpty() ? ' id="'.$block->fragment()->value().'"' : '';
 $backgroundType = $block->backgroundtype()->value();
 $blur = ($backgroundType === 'image') ? intval($block->blurimage()->value()) : (($backgroundType === 'video') ? intval($block->blurvideo()->value()) : 0);
