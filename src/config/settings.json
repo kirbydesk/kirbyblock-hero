@@ -1,45 +1,68 @@
 {
 	"tabs": {
-    "layout": true,
-    "style": true,
-    "effects": true,
-    "grid": true,
-    "settings": true
-  },
-  "fields": {
-    "content": {
-      "tagline": {
-        "align": [ "left", "center", "right" ]
-      },
-      "heading": {
-        "align": [ "left", "center", "right" ],
-        "level": [ "h1", "h2", "h3", "h4" ],
-        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
-      },
-      "editor": {
-        "mode": [ "textarea", "writer" ],
-        "align": [ "left", "center", "right" ],
-        "sizes": [ "normal", "lg", "xl", "2xl", "3xl" ]
-      },
-      "buttons": {
-        "align": [ "left", "center", "right" ]
-      }
-    },
-    "layout": {
-      "padding": true,
-      "radius": true
-    },
-    "style": {
-      "theme": true
-    },
-    "effects": {
-      "blur": true,
-      "overlay": true
-    },
-    "settings": {
-      "fragment": true,
-      "block-size": true,
-      "margin": true
-    }
-  }
+		"layout": true,
+		"style": true,
+		"effects": true,
+		"grid": true,
+		"settings": true
+	},
+	"fields": {
+		"content": {
+			"tagline": {
+				"align": { "options": ["left", "center", "right"], "default": "left" }
+			},
+			"heading": {
+				"align": { "options": ["left", "center", "right"], "default": "left" },
+				"level": { "options": ["h1", "h2", "h3", "h4"], "default": "h2" },
+				"sizes": { "options": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"], "default": "lg" }
+			},
+			"editor": {
+				"mode": { "options": ["textarea", "writer"], "default": "textarea" },
+				"align": { "options": ["left", "center", "right"], "default": "left" },
+				"sizes": { "options": ["normal", "lg", "xl", "2xl", "3xl"], "default": "normal" }
+			},
+			"buttons": {
+				"align": { "options": ["left", "center", "right"], "default": "left" }
+			}
+		},
+		"layout": {
+			"padding": "enabled",
+			"padding-top": { "default": "large" },
+			"padding-bottom": { "default": "large" },
+			"padding-left": { "default": true },
+			"padding-right": { "default": true },
+			"horizontal-content-position": { "options": ["left", "center", "right"], "default": "left" },
+			"vertical-content-position": { "options": ["top", "middle", "bottom"], "default": "middle" },
+			"radius": "enabled",
+			"radius-top-left": { "default": false },
+			"radius-top-right": { "default": false },
+			"radius-bottom-left": { "default": false },
+			"radius-bottom-right": { "default": false }
+		},
+		"style": {
+			"theme": { "options": ["default", "variant", "variant2", "custom"], "required": true, "default": "default" },
+			"height": { "options": ["auto", "small", "medium", "large", "fullscreen"], "default": "small" },
+			"background-type": { "options": ["color", "image", "video"], "default": "color" }
+		},
+		"effects": {
+			"blur": "enabled",
+			"overlay": "enabled"
+		},
+		"grid": {
+			"grid-size-sm": { "default": 12 },
+			"grid-size-md": { "default": 12 },
+			"grid-size-lg": { "default": 12 },
+			"grid-size-xl": { "default": 12 },
+			"grid-offset-sm": { "default": 0 },
+			"grid-offset-md": { "default": 0 },
+			"grid-offset-lg": { "default": 0 },
+			"grid-offset-xl": { "default": 0 }
+		},
+		"settings": {
+			"fragment": "enabled",
+			"block-size": { "default": "content" },
+			"margin-top": { "default": false },
+			"margin-bottom": { "default": false }
+		}
+	}
 }
