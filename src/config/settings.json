@@ -41,8 +41,8 @@
 		},
 		"style": {
 			"theme": { "options": ["default", "variant", "variant2", "custom"], "required": true, "default": "default" },
-			"height": { "options": ["auto", "small", "medium", "large", "fullscreen"], "default": "small" },
-			"background-type": { "options": ["color", "image", "video"], "default": "color" }
+			"height": { "options": ["auto", "small", "medium", "large", "fullscreen"], "required": true, "fixed": true, "default": "small" },
+			"background-type": { "options": ["color", "image", "video"], "required": true, "fixed": true, "default": "color" }
 		},
 		"effects": {
 			"blur": "enabled",
@@ -59,8 +59,7 @@
 			"grid-offset-xl": { "default": 0 }
 		},
 		"settings": {
-			"fragment": "enabled",
-			"block-size": { "default": "content" },
+			"block-size": { "options": ["content", "fullscreen"], "required": true, "fixed": true, "default": "content" },
 			"margin-top": { "default": false },
 			"margin-bottom": { "default": false }
 		}
