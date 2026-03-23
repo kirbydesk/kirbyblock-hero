@@ -54,10 +54,10 @@
 				<div
 					class="pwGridItem"
 					:style="gridVars"
-					:data-paddingtop="content.paddingtop === true ? 'true' : null"
-					:data-paddingright="content.paddingright === true ? 'true' : null"
-					:data-paddingbottom="content.paddingbottom === true ? 'true' : null"
-					:data-paddingleft="content.paddingleft === true ? 'true' : null"
+					:data-paddingtop="content.paddingtop || defaults['padding-top'] || null"
+					:data-paddingright="(content.paddingright !== undefined ? content.paddingright : defaults['padding-right']) === true ? 'true' : null"
+					:data-paddingbottom="content.paddingbottom || defaults['padding-bottom'] || null"
+					:data-paddingleft="(content.paddingleft !== undefined ? content.paddingleft : defaults['padding-left']) === true ? 'true' : null"
 					>
 
 					<div class="contents" :data-h="content.positionhorizontal" :data-v="content.positionvertical">
@@ -104,6 +104,7 @@ export default {
 		return {
 			settings: {},
 			fieldDefaults: {},
+			defaults: {},
 			imageFocus: '50% 50%',
 			focusReady: false
 		}
@@ -113,6 +114,7 @@ export default {
 			const response = await this.$api.get('pagewizard/settings/pwhero');
 			this.settings = response.settings;
 			this.fieldDefaults = response.fields || {};
+			this.defaults = response.defaults || {};
 		} catch (e) {
 			this.settings = {};
 		}
