@@ -31,8 +31,8 @@
 			"padding-bottom": { "default": "large" },
 			"padding-left": { "default": true },
 			"padding-right": { "default": true },
-			"horizontal-content-position": { "options": ["left", "center", "right"], "default": "left" },
-			"vertical-content-position": { "options": ["top", "middle", "bottom"], "default": "middle" },
+			"position-horizontal": { "options": ["left", "center", "right"], "default": "left" },
+			"position-vertical": { "options": ["top", "middle", "bottom"], "default": "middle" },
 			"radius": "enabled",
 			"radius-top-left": { "default": false },
 			"radius-top-right": { "default": false },
@@ -61,7 +61,7 @@
 		"settings": {
 			"block-size": { "options": ["content", "fullscreen"], "required": true, "fixed": true, "default": "content" },
 			"margin-top": { "default": false },
-			"margin-bottom": { "default": false }
+			"margin-bottom": { "default": true }
 		}
 	}
 }

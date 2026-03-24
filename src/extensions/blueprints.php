@@ -71,11 +71,11 @@
 			'headlineContentposition' => ['extends' => 'pagewizard/headlines/contentposition'],
 			'positionHorizontal' => [
 				'extends' => 'pagewizard/fields/position-horizontal',
-				'default' => $defaults['horizontal-content-position']
+				'default' => $defaults['position-horizontal']
 			],
 			'positionVertical' => [
 				'extends' => 'pagewizard/fields/position-vertical',
-				'default' => $defaults['vertical-content-position']
+				'default' => $defaults['position-vertical']
 			],
 		], $config['layout'] ?? []));
 
