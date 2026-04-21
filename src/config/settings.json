@@ -14,7 +14,8 @@
 			"heading": {
 				"align": { "options": ["left", "center", "right"], "default": "left" },
 				"level": { "options": ["h1", "h2", "h3", "h4"], "default": "h1" },
-				"sizes": { "options": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"], "default": "lg" }
+				"sizes": { "options": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"], "default": "lg" },
+				"textbackground": { "options": ["disabled", "enabled"], "default": "disabled" }
 			},
 			"editor": {
 				"mode": { "options": ["textarea", "writer"], "default": "textarea" },
