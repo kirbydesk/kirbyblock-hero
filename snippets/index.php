@@ -5,38 +5,19 @@ $config   = pwConfig::load('pwhero');
 $settings = $config['content'];
 
 // Custom Background
-if ($block->content()->theme()->value() === 'custom'):
-	snippet('customcss', [
-		'blockid' => 'b'.$block->id(),
-		'textcolor' => $block->content()->textcolor()->value(),
-		'backgroundcolor' => $block->content()->backgroundcolor()->value()
-	]);
-endif;
+pwSnippet::customCss($block);
+
+// Hero-specific extra attributes for <section>: background-type, height,
+// optional blur (only when image/video background + non-zero blur).
+$backgroundType = $block->backgroundtype()->value();
+$blur = ($backgroundType === 'image') ? intval($block->blurimage()->value())
+      : (($backgroundType === 'video') ? intval($block->blurvideo()->value()) : 0);
+$extraAttrs  = ' data-background-type="' . $backgroundType . '"';
+$extraAttrs .= ' data-height="' . $block->height()->value() . '"';
+if ($blur > 0) $extraAttrs .= ' data-blur style="--blur-amount:' . $blur . 'px"';
 
 // Section
-echo '<section';
-echo ' data-block="hero"';
-echo ' data-block-id="b'.$block->id().'"';
-echo ' data-margin-top="'.($block->margintop()->toBool() ? 'true' : 'false').'"';
-echo ' data-margin-bottom="'.($block->marginbottom()->toBool() ? 'true' : 'false').'"';
-echo ' data-padding-top="'.$block->paddingtop()->value().'"';
-echo ' data-padding-right="'.($block->paddingright()->toBool() ? 'true' : 'false').'"';
-echo ' data-padding-bottom="'.$block->paddingbottom()->value().'"';
-echo ' data-padding-left="'.($block->paddingleft()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-top-left="'.($block->radiustopleft()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-top-right="'.($block->radiustopright()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-bottom-right="'.($block->radiusbottomright()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-bottom-left="'.($block->radiusbottomleft()->toBool() ? 'true' : 'false').'"';
-echo ' data-style="'.$block->theme()->value().'"';
-echo ' data-block-size="'.$block->blocksize()->value().'"';
-echo ' data-background-type="'.$block->backgroundtype()->value().'"';
-echo ' data-height="'.$block->height()->value().'"';
-e(!empty($settings['buttons']) && $block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() !== 'default', ' data-button-style="' . $block->buttonstyle()->value() . '"');
-echo $block->fragment()->isNotEmpty() ? ' id="'.$block->fragment()->value().'"' : '';
-$backgroundType = $block->backgroundtype()->value();
-$blur = ($backgroundType === 'image') ? intval($block->blurimage()->value()) : (($backgroundType === 'video') ? intval($block->blurvideo()->value()) : 0);
-if ($blur > 0) echo ' data-blur style="--blur-amount:'.$blur.'px"';
-echo '>'."\n";
+echo pwSnippet::sectionOpen('hero', $block, $settings, $extraAttrs);
 
 // Background Image
 if ($block->backgroundtype()->value() === 'image' && $block->image()->isNotEmpty()):
@@ -80,17 +61,8 @@ if ($overlayType === 'solid') {
 	echo '></div>'."\n";
 }
 
-// Grid
-echo '<div data-layout="grid"><div data-layout="grid-item"';
-echo ' data-grid-size-sm="'.$block->gridsizesm()->value().'"';
-echo ' data-grid-size-md="'.$block->gridsizemd()->value().'"';
-echo ' data-grid-size-lg="'.$block->gridsizelg()->value().'"';
-echo ' data-grid-size-xl="'.$block->gridsizexl()->value().'"';
-echo ' data-grid-offset-sm="'.$block->gridoffsetsm()->value().'"';
-echo ' data-grid-offset-md="'.$block->gridoffsetmd()->value().'"';
-echo ' data-grid-offset-lg="'.$block->gridoffsetlg()->value().'"';
-echo ' data-grid-offset-xl="'.$block->gridoffsetxl()->value().'"';
-echo '>'."\n";
+// Grid open
+echo pwSnippet::gridOpen($block);
 
 // Content wrapper with positioning
 echo '<div data-field="contents"';
@@ -119,5 +91,7 @@ if (!empty($settings['buttons'])):
 endif;
 
 echo '</div>'."\n"; // End contents
-echo '</div></div>'."\n"; // End Grid
-echo '</section>'."\n";
+
+// Close
+echo pwSnippet::gridClose();
+echo pwSnippet::sectionClose();
