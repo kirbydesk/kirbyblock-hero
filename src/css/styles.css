@@ -5,48 +5,9 @@
 	Override: Activate patch file site/patches/css/kirbyblock-hero/styles.css
 ------------------------------------------------------------------------------------------------*/
 
-
 /*------------------------------------------------------------------------------------------------
 	Element Margins
 ------------------------------------------------------------------------------------------------*/
-
-/* -------------- Tagline --------------*/
-[data-field="tagline"] {
-	+ [data-field="heading"] {
-		margin-top: 0.5rem;
-	}
-	+ [data-field="textarea"],
-	+ [data-field="writer"],
-	+ [data-field="markdown"] {
-		margin-top: 0.3rem;
-	}
-	+ [data-field="buttons"] {
-		margin-top: 1rem;
-	}
-}
-
-/* -------------- Heading --------------*/
-[data-field="heading"] {
-	+ [data-field="textarea"],
-	+ [data-field="writer"],
-	+ [data-field="markdown"] {
-		margin-top: 0.5rem;
-	}
-	+ [data-field="buttons"] {
-		margin-top: 1.2rem;
-	}
-}
-
-/* -------------- Texts --------------*/
-[data-field="textarea"],
-[data-field="writer"],
-[data-field="markdown"] {
-	+ [data-field="buttons"] {
-		margin-top: 1.2rem;
-	}
-}
-
-
 
 /*------------------------------------------------------------------------------------------------
 	Hero Height Variables
@@ -58,7 +19,6 @@
 	--pw-hero-height-fullscreen: 100vh;
 }
 
-
 /*------------------------------------------------------------------------------------------------
 	Hero Block Base
 ------------------------------------------------------------------------------------------------*/
@@ -66,7 +26,6 @@ section[data-block="hero"] {
 	position: relative;
 	overflow: hidden;
 }
-
 
 /*------------------------------------------------------------------------------------------------
 	Hero Height Variants
@@ -76,7 +35,6 @@ section[data-block="hero"][data-height="small"]      { height: var(--pw-hero-hei
 section[data-block="hero"][data-height="medium"]     { height: var(--pw-hero-height-medium); }
 section[data-block="hero"][data-height="large"]      { height: var(--pw-hero-height-large); }
 section[data-block="hero"][data-height="fullscreen"] { height: var(--pw-hero-height-fullscreen); }
-
 
 /*------------------------------------------------------------------------------------------------
 	Hero Background (Image & Video)
@@ -91,7 +49,6 @@ section[data-block="hero"] [data-field="background-video"] {
 	z-index: 0;
 }
 
-
 /*------------------------------------------------------------------------------------------------
 	Hero Blur
 ------------------------------------------------------------------------------------------------*/
@@ -100,7 +57,6 @@ section[data-block="hero"][data-blur] [data-field="background-video"] {
 	filter: blur(var(--blur-amount));
 	transform: scale(1.05);
 }
-
 
 /*------------------------------------------------------------------------------------------------
 	Hero Overlay
@@ -143,7 +99,6 @@ section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bott
 section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"][data-overlay-size="xlarge"],
 section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"][data-overlay-size="xlarge"] { height: 100%; }
 
-
 /*------------------------------------------------------------------------------------------------
 	Hero Grid (Content Layer)
 ------------------------------------------------------------------------------------------------*/
@@ -157,7 +112,6 @@ section[data-block="hero"] [data-layout="grid-item"] {
 	display: flex;
 	height: 100%;
 }
-
 
 /*------------------------------------------------------------------------------------------------
 	Hero Content Positioning
