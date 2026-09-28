@@ -36,12 +36,26 @@
 					"min": 5,
 					"max": 100
 				},
-				"buttons-gap": {
-					"value": "1.5rem",
+				"tagline-spacing": {
+					"value": "0.5rem",
 					"unit": "rem",
 					"step": 0.1,
 					"min": 0,
-					"max": 8
+					"max": 6
+				},
+				"heading-spacing": {
+					"value": "0.5rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
+				"editor-spacing": {
+					"value": "1.2rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
 				}
 			}
 		}
@@ -156,6 +170,14 @@
 			},
 			"padding-right": {
 				"default": true
+			},
+			"item-spacing": {
+				"label": "kirbyblock-hero.item-spacing",
+				"options": [
+					"global",
+					"own"
+				],
+				"default": "global"
 			},
 			"position-horizontal": {
 				"options": [

@@ -121,15 +121,3 @@ section[data-block="hero"] [data-field="contents"][data-h="right"]  { margin-lef
 section[data-block="hero"] [data-field="contents"][data-v="top"]    { margin-bottom: auto; }
 section[data-block="hero"] [data-field="contents"][data-v="middle"] { margin-top: auto; margin-bottom: auto; }
 section[data-block="hero"] [data-field="contents"][data-v="bottom"] { margin-top: auto; }
-
-/*------------------------------------------------------------------------------------------------
-	Hero Buttons: their own gap to the text above (Project Wizard → Design), in
-	place of that text's space below (the content is a flex column: margins
-	would add up, not collapse)
-------------------------------------------------------------------------------------------------*/
-section[data-block="hero"] [data-field="contents"] > :has(+ [data-field="buttons"]) {
-	--pw-space-after: 0px;
-}
-section[data-block="hero"] [data-field="contents"] > * + [data-field="buttons"] {
-	margin-top: var(--pwhero-buttons-gap);
-}

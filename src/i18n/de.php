@@ -7,5 +7,8 @@
 	'prw.prop.height-small' => 'Klein',
 	'prw.prop.height-medium' => 'Mittel',
 	'prw.prop.height-large' => 'Groß',
-	'prw.prop.buttons-gap' => 'Abstand zu den Buttons',
+	'kirbyblock-hero.item-spacing' => 'Abstand nach unten',
+	'prw.prop.tagline-spacing' => 'Tagline',
+	'prw.prop.heading-spacing' => 'Überschrift',
+	'prw.prop.editor-spacing' => 'Text',
 );
