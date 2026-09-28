@@ -6,6 +6,46 @@
 		"grid": true,
 		"settings": true
 	},
+	"values": {
+		"hero": {
+			"vars": {
+				"height-small": {
+					"default": "25vh",
+					"lg": "25vh",
+					"xl": "25vh",
+					"unit": "vh",
+					"step": 1,
+					"min": 5,
+					"max": 100
+				},
+				"height-medium": {
+					"default": "50vh",
+					"lg": "50vh",
+					"xl": "50vh",
+					"unit": "vh",
+					"step": 1,
+					"min": 5,
+					"max": 100
+				},
+				"height-large": {
+					"default": "75vh",
+					"lg": "75vh",
+					"xl": "75vh",
+					"unit": "vh",
+					"step": 1,
+					"min": 5,
+					"max": 100
+				},
+				"buttons-gap": {
+					"value": "1.5rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 8
+				}
+			}
+		}
+	},
 	"fields": {
 		"content": {
 			"tagline": {

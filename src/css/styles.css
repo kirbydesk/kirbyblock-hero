@@ -10,16 +10,6 @@
 ------------------------------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------------------------
-	Hero Height Variables
-------------------------------------------------------------------------------------------------*/
-:root {
-	--pw-hero-height-small: 25vh;
-	--pw-hero-height-medium: 50vh;
-	--pw-hero-height-large: 75vh;
-	--pw-hero-height-fullscreen: 100vh;
-}
-
-/*------------------------------------------------------------------------------------------------
 	Hero Block Base
 ------------------------------------------------------------------------------------------------*/
 section[data-block="hero"] {
@@ -31,10 +21,11 @@ section[data-block="hero"] {
 	Hero Height Variants
 ------------------------------------------------------------------------------------------------*/
 section[data-block="hero"][data-height="auto"]       { height: auto; }
-section[data-block="hero"][data-height="small"]      { height: var(--pw-hero-height-small); }
-section[data-block="hero"][data-height="medium"]     { height: var(--pw-hero-height-medium); }
-section[data-block="hero"][data-height="large"]      { height: var(--pw-hero-height-large); }
-section[data-block="hero"][data-height="fullscreen"] { height: var(--pw-hero-height-fullscreen); }
+/* small, medium, large: Project Wizard → Design (per device) */
+section[data-block="hero"][data-height="small"]      { height: var(--pwhero-height-small); }
+section[data-block="hero"][data-height="medium"]     { height: var(--pwhero-height-medium); }
+section[data-block="hero"][data-height="large"]      { height: var(--pwhero-height-large); }
+section[data-block="hero"][data-height="fullscreen"] { height: 100vh; }
 
 /*------------------------------------------------------------------------------------------------
 	Hero Background (Image & Video)
@@ -130,3 +121,15 @@ section[data-block="hero"] [data-field="contents"][data-h="right"]  { margin-lef
 section[data-block="hero"] [data-field="contents"][data-v="top"]    { margin-bottom: auto; }
 section[data-block="hero"] [data-field="contents"][data-v="middle"] { margin-top: auto; margin-bottom: auto; }
 section[data-block="hero"] [data-field="contents"][data-v="bottom"] { margin-top: auto; }
+
+/*------------------------------------------------------------------------------------------------
+	Hero Buttons: their own gap to the text above (Project Wizard → Design), in
+	place of that text's space below (the content is a flex column: margins
+	would add up, not collapse)
+------------------------------------------------------------------------------------------------*/
+section[data-block="hero"] [data-field="contents"] > :has(+ [data-field="buttons"]) {
+	--pw-space-after: 0px;
+}
+section[data-block="hero"] [data-field="contents"] > * + [data-field="buttons"] {
+	margin-top: var(--pwhero-buttons-gap);
+}
