@@ -10,9 +10,9 @@
 		"hero": {
 			"vars": {
 				"height-small": {
-					"default": "25vh",
-					"lg": "25vh",
-					"xl": "25vh",
+					"default": "33vh",
+					"lg": "33vh",
+					"xl": "33vh",
 					"unit": "vh",
 					"step": 1,
 					"min": 5,
