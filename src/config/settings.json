@@ -172,7 +172,7 @@
 				"default": true
 			},
 			"item-spacing": {
-				"label": "kirbyblock-hero.item-spacing",
+				"label": "pw.field.item-spacing",
 				"options": [
 					"global",
 					"own"
