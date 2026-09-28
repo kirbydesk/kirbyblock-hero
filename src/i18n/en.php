@@ -7,7 +7,7 @@
 	'prw.prop.height-small' => 'Small',
 	'prw.prop.height-medium' => 'Medium',
 	'prw.prop.height-large' => 'Large',
-	'kirbyblock-hero.item-spacing' => 'Space below',
+	'kirbyblock-hero.item-spacing' => 'Values',
 	'prw.prop.tagline-spacing' => 'Tagline',
 	'prw.prop.heading-spacing' => 'Heading',
 	'prw.prop.editor-spacing' => 'Text',
