@@ -57,6 +57,14 @@
 					"min": 0,
 					"max": 6
 				}
+			},
+			"colors": {
+				"overlay": {
+					"default": "#000000",
+					"variant": "#000000",
+					"variant2": "#FFFFFF",
+					"variant3": "#FFFFFF"
+				}
 			}
 		}
 	},

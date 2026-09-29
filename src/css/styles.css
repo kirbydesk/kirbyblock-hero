@@ -56,17 +56,26 @@ section[data-block="hero"] [data-overlay] {
 	position: absolute;
 	pointer-events: none;
 	z-index: 1;
+	/* the variant's overlay colour (Project Wizard → Design) at the block's
+	   strength */
+	--pw-hero-overlay-color: color-mix(in srgb, var(--pw-hero-overlay) calc(var(--overlay-intensity) * 100%), transparent);
 }
+
+/* the overlay colour of the block's variant (custom: the default's) */
+section[data-block="hero"]                          { --pw-hero-overlay: var(--pwhero-overlay); }
+section[data-block="hero"][data-style="variant"]    { --pw-hero-overlay: var(--pwhero-overlay-variant); }
+section[data-block="hero"][data-style="variant2"]   { --pw-hero-overlay: var(--pwhero-overlay-variant2); }
+section[data-block="hero"][data-style="variant3"]   { --pw-hero-overlay: var(--pwhero-overlay-variant3); }
 
 section[data-block="hero"] [data-overlay="solid"] {
 	inset: 0;
-	background: rgba(0,0,0,var(--overlay-intensity));
+	background: var(--pw-hero-overlay-color);
 }
 
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"]   { inset: 0 auto 0 0; background: linear-gradient(to right,  rgba(0,0,0,var(--overlay-intensity)), transparent); }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"]  { inset: 0 0 0 auto; background: linear-gradient(to left,   rgba(0,0,0,var(--overlay-intensity)), transparent); }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"]    { inset: 0 0 auto 0; background: linear-gradient(to bottom, rgba(0,0,0,var(--overlay-intensity)), transparent); }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"] { inset: auto 0 0 0; background: linear-gradient(to top,    rgba(0,0,0,var(--overlay-intensity)), transparent); }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"]   { inset: 0 auto 0 0; background: linear-gradient(to right,  var(--pw-hero-overlay-color), transparent); }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"]  { inset: 0 0 0 auto; background: linear-gradient(to left,   var(--pw-hero-overlay-color), transparent); }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"]    { inset: 0 0 auto 0; background: linear-gradient(to bottom, var(--pw-hero-overlay-color), transparent); }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"] { inset: auto 0 0 0; background: linear-gradient(to top,    var(--pw-hero-overlay-color), transparent); }
 
 section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"],
 section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"]  { height: 100%; }

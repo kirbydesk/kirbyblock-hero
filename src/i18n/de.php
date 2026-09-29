@@ -7,4 +7,5 @@
 	'prw.prop.height-small' => 'Klein',
 	'prw.prop.height-medium' => 'Mittel',
 	'prw.prop.height-large' => 'Groß',
+	'prw.prop.overlay' => 'Überlagerung',
 );
