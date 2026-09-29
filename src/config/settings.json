@@ -60,10 +60,10 @@
 			},
 			"colors": {
 				"overlay": {
-					"default": "#000000",
-					"variant": "#000000",
-					"variant2": "#FFFFFF",
-					"variant3": "#FFFFFF"
+					"default": "#FFFFFF",
+					"variant": "#FFFFFF",
+					"variant2": "#000000",
+					"variant3": "#000000"
 				}
 			}
 		}
