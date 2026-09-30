@@ -15,17 +15,23 @@
 section[data-block="hero"] {
 	position: relative;
 	overflow: hidden;
+	/* the grid fills the hero's height (which is a minimum, see below) */
+	display: flex;
+	flex-direction: column;
 }
 
 /*------------------------------------------------------------------------------------------------
 	Hero Height Variants
 ------------------------------------------------------------------------------------------------*/
-section[data-block="hero"][data-height="auto"]       { height: auto; }
+/* a minimum: with more content (long texts, buttons, small screens) the
+   hero grows instead of letting it spill out */
+section[data-block="hero"][data-height="auto"]       { min-height: auto; }
 /* small, medium, large: Project Wizard → Design (per device) */
-section[data-block="hero"][data-height="small"]      { height: var(--pwhero-height-small); }
-section[data-block="hero"][data-height="medium"]     { height: var(--pwhero-height-medium); }
-section[data-block="hero"][data-height="large"]      { height: var(--pwhero-height-large); }
-section[data-block="hero"][data-height="fullscreen"] { height: 100vh; }
+section[data-block="hero"][data-height="small"]      { min-height: var(--pwhero-height-small); }
+section[data-block="hero"][data-height="medium"]     { min-height: var(--pwhero-height-medium); }
+section[data-block="hero"][data-height="large"]      { min-height: var(--pwhero-height-large); }
+/* the visible screen height (without the mobile browser's bars) */
+section[data-block="hero"][data-height="fullscreen"] { min-height: 100svh; }
 
 /*------------------------------------------------------------------------------------------------
 	Hero Background (Image & Video)
@@ -105,7 +111,7 @@ section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bott
 section[data-block="hero"] [data-layout="grid"] {
 	position: relative;
 	z-index: 2;
-	height: 100%;
+	flex: 1 1 auto;
 }
 
 section[data-block="hero"] [data-layout="grid-item"] {

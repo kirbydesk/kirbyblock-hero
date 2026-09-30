@@ -295,7 +295,7 @@
 				"default": false
 			},
 			"margin-bottom": {
-				"default": true
+				"default": false
 			}
 		}
 	}
