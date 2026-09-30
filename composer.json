@@ -21,6 +21,7 @@
 	},
 	"require": {
 		"getkirby/composer-installer": "^1.2",
-		"kirbydesk/kirby-pagewizard": "^1.0"
+		"kirbydesk/kirby-pagewizard": "^1.0",
+		"kirbydesk/kirby-projectwizard": "^1.0"
 	}
 }
