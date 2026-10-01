@@ -11,9 +11,15 @@
 		}
 		if (!empty($effectsVis['overlay'])) {
 			$effectsFields['overlayType']              = ['extends' => 'pagewizard/fields/overlay-type'];
-			$effectsFields['overlayIntensity']         = ['extends' => 'pagewizard/fields/overlay-intensity',  'when' => ['overlayType' => 'solid']];
-			$effectsFields['overlayGradientIntensity'] = ['extends' => 'pagewizard/fields/overlay-intensity',  'when' => ['overlayType' => 'gradient']];
-			$effectsFields['overlaySize']              = ['extends' => 'pagewizard/fields/overlay-size',       'when' => ['overlayType' => 'gradient']];
+			// the strength: a range with a square in the variant's overlay colour
+			$strength = ['type' => 'pwoverlay', 'block' => 'pwhero', 'swatch' => 'overlay'];
+			$effectsFields['overlayIntensity']         = ['extends' => 'pagewizard/fields/overlay-intensity',  'when' => ['overlayType' => 'solid']] + $strength;
+			$effectsFields['overlayGradientIntensity'] = ['extends' => 'pagewizard/fields/overlay-intensity',  'when' => ['overlayType' => 'gradient']] + $strength;
+			// the gradient's width (left/right) or height (top/bottom), 10–100 %
+			$effectsFields['overlayWidth']             = ['extends' => 'pagewizard/fields/overlay-width',      'when' => ['overlayType' => 'gradient']];
+			// (the former steps – small, medium … –, kept for heroes from before
+			// without a width: the frontend reads them as 25, 50, 75, 100 %)
+			$effectsFields['overlaySize']              = ['type' => 'hidden'];
 			$effectsFields['overlayPosition']          = ['extends' => 'pagewizard/fields/overlay-position',   'when' => ['overlayType' => 'gradient']];
 		}
 

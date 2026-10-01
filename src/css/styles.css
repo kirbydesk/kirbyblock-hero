@@ -78,32 +78,28 @@ section[data-block="hero"] [data-overlay="solid"] {
 	background: var(--pw-hero-overlay-color);
 }
 
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"]   { inset: 0 auto 0 0; background: linear-gradient(to right,  var(--pw-hero-overlay-color), transparent); }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"]  { inset: 0 0 0 auto; background: linear-gradient(to left,   var(--pw-hero-overlay-color), transparent); }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"]    { inset: 0 0 auto 0; background: linear-gradient(to bottom, var(--pw-hero-overlay-color), transparent); }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"] { inset: auto 0 0 0; background: linear-gradient(to top,    var(--pw-hero-overlay-color), transparent); }
-
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"]  { height: 100%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"][data-overlay-size="small"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"][data-overlay-size="small"]  { width: 25%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"][data-overlay-size="medium"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"][data-overlay-size="medium"] { width: 50%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"][data-overlay-size="large"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"][data-overlay-size="large"]  { width: 75%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"][data-overlay-size="xlarge"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"][data-overlay-size="xlarge"] { width: 100%; }
-
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"]  { width: 100%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"][data-overlay-size="small"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"][data-overlay-size="small"]  { height: 25%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"][data-overlay-size="medium"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"][data-overlay-size="medium"] { height: 50%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"][data-overlay-size="large"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"][data-overlay-size="large"]  { height: 75%; }
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"][data-overlay-size="xlarge"],
-section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"][data-overlay-size="xlarge"] { height: 100%; }
+/* the gradient: full strength over its first 35 %, then easing out in
+   steps (no edge shows); as wide (left/right) or high (top/bottom) as the
+   block's size */
+section[data-block="hero"] [data-overlay="gradient"] {
+	--pw-hero-o: var(--pw-hero-overlay);
+	--pw-hero-s: calc(var(--overlay-intensity) * 100%);
+	background: linear-gradient(
+		var(--pw-hero-overlay-direction),
+		color-mix(in srgb, var(--pw-hero-o) var(--pw-hero-s), transparent) 0%,
+		color-mix(in srgb, var(--pw-hero-o) var(--pw-hero-s), transparent) 35%,
+		color-mix(in srgb, var(--pw-hero-o) calc(var(--pw-hero-s) * 0.85), transparent) 45%,
+		color-mix(in srgb, var(--pw-hero-o) calc(var(--pw-hero-s) * 0.62), transparent) 55%,
+		color-mix(in srgb, var(--pw-hero-o) calc(var(--pw-hero-s) * 0.4), transparent) 65%,
+		color-mix(in srgb, var(--pw-hero-o) calc(var(--pw-hero-s) * 0.2), transparent) 75%,
+		color-mix(in srgb, var(--pw-hero-o) calc(var(--pw-hero-s) * 0.07), transparent) 87%,
+		transparent 100%
+	);
+}
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="left"]   { inset: 0 auto 0 0; width: var(--overlay-size, 50%); --pw-hero-overlay-direction: to right; }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="right"]  { inset: 0 0 0 auto; width: var(--overlay-size, 50%); --pw-hero-overlay-direction: to left; }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="top"]    { inset: 0 0 auto 0; height: var(--overlay-size, 50%); --pw-hero-overlay-direction: to bottom; }
+section[data-block="hero"] [data-overlay="gradient"][data-overlay-position="bottom"] { inset: auto 0 0 0; height: var(--overlay-size, 50%); --pw-hero-overlay-direction: to top; }
 
 /*------------------------------------------------------------------------------------------------
 	Hero Grid (Content Layer)

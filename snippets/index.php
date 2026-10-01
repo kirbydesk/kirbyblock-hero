@@ -54,10 +54,13 @@ if ($overlayType === 'solid') {
 	echo '<div data-overlay="solid" style="--overlay-intensity:'.$intensity.'"></div>'."\n";
 } elseif ($overlayType === 'gradient') {
 	$intensity = intval($block->overlaygradientintensity()->value()) / 100;
+	// its width / height: the range, else the former steps
+	$size = $block->overlaywidth()->isNotEmpty()
+		? intval($block->overlaywidth()->value())
+		: (['small' => 25, 'medium' => 50, 'large' => 75, 'xlarge' => 100][$block->overlaysize()->value()] ?? 50);
 	echo '<div data-overlay="gradient"';
-	echo ' data-overlay-size="'.$block->overlaysize()->value().'"';
 	echo ' data-overlay-position="'.$block->overlayposition()->value().'"';
-	echo ' style="--overlay-intensity:'.$intensity.'"';
+	echo ' style="--overlay-intensity:'.$intensity.';--overlay-size:'.$size.'%"';
 	echo '></div>'."\n";
 }
 
