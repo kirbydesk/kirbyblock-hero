@@ -115,6 +115,19 @@ section[data-block="hero"] [data-layout="grid-item"] {
 	height: 100%;
 }
 
+/* below 640px there is no grid (the grid container is a plain block): the
+   content's item stretched over the hero's height all the same, so the
+   vertical position (top, middle, bottom) applies on phones too */
+@media (max-width: 639px) {
+	section[data-block="hero"] [data-layout="grid"] {
+		display: flex;
+		flex-direction: column;
+	}
+	section[data-block="hero"] [data-layout="grid-item"] {
+		flex: 1 1 auto;
+	}
+}
+
 /*------------------------------------------------------------------------------------------------
 	Hero Content Positioning
 ------------------------------------------------------------------------------------------------*/
