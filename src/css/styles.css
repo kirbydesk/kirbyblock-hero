@@ -108,6 +108,9 @@ section[data-block="hero"] [data-layout="grid"] {
 	position: relative;
 	z-index: 2;
 	flex: 1 1 auto;
+	/* the hero is a flex column: with margin auto (centred at max-width) the
+	   grid would shrink to its content instead of stretching */
+	width: 100%;
 }
 
 section[data-block="hero"] [data-layout="grid-item"] {
