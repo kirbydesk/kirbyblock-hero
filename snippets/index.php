@@ -49,9 +49,14 @@ endif;
 
 // Overlay
 $overlayType = $block->overlaytype()->value();
+// (custom variant: the block's own overlay colour, else the default's)
+$overlayColor = (string) $block->overlaycolor()->value();
+$overlayColor = $block->theme()->value() === 'custom' && preg_match('/^[#a-z0-9(),.%\s\/-]+$/i', $overlayColor)
+	? ';--pw-hero-overlay:'.$overlayColor
+	: '';
 if ($overlayType === 'solid') {
 	$intensity = intval($block->overlayintensity()->value()) / 100;
-	echo '<div data-overlay="solid" style="--overlay-intensity:'.$intensity.'"></div>'."\n";
+	echo '<div data-overlay="solid" style="--overlay-intensity:'.$intensity.$overlayColor.'"></div>'."\n";
 } elseif ($overlayType === 'gradient') {
 	$intensity = intval($block->overlaygradientintensity()->value()) / 100;
 	// its width / height: the range, else the former steps
@@ -60,7 +65,7 @@ if ($overlayType === 'solid') {
 		: (['small' => 25, 'medium' => 50, 'large' => 75, 'xlarge' => 100][$block->overlaysize()->value()] ?? 50);
 	echo '<div data-overlay="gradient"';
 	echo ' data-overlay-position="'.$block->overlayposition()->value().'"';
-	echo ' style="--overlay-intensity:'.$intensity.';--overlay-size:'.$size.'%"';
+	echo ' style="--overlay-intensity:'.$intensity.';--overlay-size:'.$size.'%'.$overlayColor.'"';
 	echo '></div>'."\n";
 }
 

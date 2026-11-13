@@ -12,7 +12,7 @@
 		if (!empty($effectsVis['overlay'])) {
 			$effectsFields['overlayType']              = ['extends' => 'pagewizard/fields/overlay-type'];
 			// the strength: a range with a square in the variant's overlay colour
-			$strength = ['type' => 'pwoverlay', 'block' => 'pwhero', 'swatch' => 'overlay'];
+			$strength = ['type' => 'pwoverlay', 'block' => 'pwhero', 'swatch' => 'overlay', 'color' => 'overlayColor'];
 			$effectsFields['overlayIntensity']         = ['extends' => 'pagewizard/fields/overlay-intensity',  'when' => ['overlayType' => 'solid']] + $strength;
 			$effectsFields['overlayGradientIntensity'] = ['extends' => 'pagewizard/fields/overlay-intensity',  'when' => ['overlayType' => 'gradient']] + $strength;
 			// the gradient's width (left/right) or height (top/bottom), 10–100 %
@@ -22,6 +22,20 @@
 			$effectsFields['overlaySize']              = ['type' => 'hidden'];
 			$effectsFields['overlayPosition']          = ['extends' => 'pagewizard/fields/overlay-position',   'when' => ['overlayType' => 'gradient']];
 		}
+
+		// custom variant: the overlay's own colour, next to the text and
+		// background colour (a new block starts with the background colour's
+		// default)
+		$overlayColor = empty($effectsVis['overlay']) ? [] : [
+			'overlayColor' => [
+				'extends' => 'pagewizard/fields/background-color',
+				'label'   => 'kirbyblock-hero.overlay-color',
+				'help'    => 'kirbyblock-hero.overlay-color.help',
+				'when'    => ['theme' => 'custom'],
+			],
+			// (the row's rest empty: the background type starts its own row)
+			'overlayColorGap' => ['type' => 'gap', 'width' => '2/3', 'when' => ['theme' => 'custom']],
+		];
 
 		return [
 			'name'          => 'kirbyblock-hero.name',
@@ -38,7 +52,7 @@
 					'default' => $defaults['position-vertical']
 				],
 			],
-			'styleExtras' => [
+			'styleExtras' => $overlayColor + [
 				'backgroundType' => [
 					'extends' => 'pagewizard/fields/background-type',
 					'default' => $defaults['background-type']

@@ -8,4 +8,6 @@
 	'prw.prop.height-medium' => 'Medium',
 	'prw.prop.height-large' => 'Large',
 	'prw.prop.overlay' => 'Colour overlay',
+	'kirbyblock-hero.overlay-color' => 'Overlay color',
+	'kirbyblock-hero.overlay-color.help' => 'The color over the image or video, behind the texts.',
 );

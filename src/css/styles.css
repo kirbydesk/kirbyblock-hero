@@ -67,7 +67,8 @@ section[data-block="hero"] [data-overlay] {
 	--pw-hero-overlay-color: color-mix(in srgb, var(--pw-hero-overlay) calc(var(--overlay-intensity) * 100%), transparent);
 }
 
-/* the overlay colour of the block's variant (custom: the default's) */
+/* the overlay colour of the block's variant (custom: the block's own, set
+   inline on the overlay, else the default's) */
 section[data-block="hero"]                          { --pw-hero-overlay: var(--pwhero-overlay); }
 section[data-block="hero"][data-style="variant"]    { --pw-hero-overlay: var(--pwhero-overlay-variant); }
 section[data-block="hero"][data-style="variant2"]   { --pw-hero-overlay: var(--pwhero-overlay-variant2); }
